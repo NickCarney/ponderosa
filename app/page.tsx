@@ -2,28 +2,30 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
+import { Almarai } from "next/font/google";
 
-function AnnouncementBanner({
-  onClose,
-}: {
-  onClose: () => void;
-}) {
+const almarai = Almarai({
+  weight: ["700"],
+  subsets: ["arabic"],
+});
+
+function AnnouncementBanner({ onClose }: { onClose: () => void }) {
   return (
-    <div className="bg-[#c9a227] text-center py-2 px-4 relative">
+    <div className="bg-[hsla(202.94,100%,26.67%,1)] text-center py-2 px-4 relative">
       <a
         href="/salary-guide"
-        className="text-[#1e3a5f] font-medium hover:underline"
+        className={`text-white font-bold hover:underline ${almarai.className}`}
       >
         Check out our brand new 2026 Salary Guide!
       </a>
       <button
         onClick={onClose}
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-[#1e3a5f] hover:opacity-70"
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:opacity-70"
         aria-label="Close announcement"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          className="h-3 w-3"
           viewBox="0 0 20 20"
           fill="currentColor"
         >
@@ -154,7 +156,7 @@ function GeometricBackground() {
       h: number,
       depth: number,
       yOffset: number,
-      amplitude: number
+      amplitude: number,
     ) => {
       const y = cy + yOffset;
 
@@ -228,7 +230,7 @@ function GeometricBackground() {
           // Left starts low, right starts high, then swap
           // Phase offset of ~π across screen width so opposite sides are opposite
           const phase = col * 0.5;
-          const amplitude = 15;
+          const amplitude = 25;
           const yOff = Math.sin(time + phase) * amplitude;
 
           drawCube(x, y, cubeWidth, cubeHeight, cubeDepth, yOff, amplitude);
@@ -259,7 +261,7 @@ function GeometricBackground() {
 
 function HeroSection() {
   return (
-    <section className="relative min-h-[600px] flex flex-col items-center justify-center">
+    <section className="relative h-screen flex flex-col items-center justify-center">
       <GeometricBackground />
 
       {/* Shadow overlay matching original */}
@@ -271,8 +273,19 @@ function HeroSection() {
         }}
       />
 
+      {/* White triangle transition */}
+      <div
+        className="absolute bottom-0 left-0 right-0 z-[2] pointer-events-none"
+        style={{
+          width: "100%",
+          height: "150px",
+          background: "#e8e8e8",
+          clipPath: "polygon(0 100%, 0 70%, 75% 20%, 100% 70%, 100% 100%)",
+        }}
+      />
+
       <div className="relative z-10 text-center px-8 py-20">
-        <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold italic leading-tight max-w-5xl mx-auto">
+        <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-5xl mx-auto">
           The Crosscheck Advantage:
           <br />
           Better Talent, Faster Results
@@ -293,7 +306,6 @@ function HeroSection() {
           </a>
         </div>
       </div>
-
     </section>
   );
 }
@@ -306,9 +318,11 @@ function WhyChooseSection() {
       description: (
         <>
           Driving transformation with top talent in{" "}
-          <strong className="text-[#8b2346]">ERP, Data Analytics, and Security</strong>. We connect you
-          with proven experts who deliver results, protect your systems, and
-          unlock insights.
+          <strong className="text-[#8b2346]">
+            ERP, Data Analytics, and Security
+          </strong>
+          . We connect you with proven experts who deliver results, protect your
+          systems, and unlock insights.
         </>
       ),
     },
@@ -318,8 +332,11 @@ function WhyChooseSection() {
       description: (
         <>
           We quickly deliver top professionals through our network and proactive
-          recruiting—tailored for <strong className="text-[#8b2346]">contract, contract-to-hire, or direct
-          hire needs</strong>.
+          recruiting—tailored for{" "}
+          <strong className="text-[#8b2346]">
+            contract, contract-to-hire, or direct hire needs
+          </strong>
+          .
         </>
       ),
     },
@@ -329,7 +346,10 @@ function WhyChooseSection() {
       description: (
         <>
           We don&apos;t just fill roles—
-          <strong className="text-[#8b2346]">we align talent with your growth goals</strong>.{" "}
+          <strong className="text-[#8b2346]">
+            we align talent with your growth goals
+          </strong>
+          .{" "}
           <strong className="text-[#8b2346]">
             From single hires to full teams, our flexible solutions scale with
             your business
@@ -370,15 +390,145 @@ function WhyChooseSection() {
   );
 }
 
+function EssentialResourcesSection() {
+  return (
+    <section className="bg-[#e8e8e8] py-16 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto bg-white rounded-xl py-16 px-6 md:px-12 lg:px-20">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#1e3a5f] text-center mb-4">
+          Essential Resources
+        </h2>
+        <p className="text-gray-600 text-center text-lg mb-16">
+          Access our comprehensive guides to stay ahead in today&apos;s
+          competitive market.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* Salary Guide Card */}
+          <div className="flex flex-col shadow-lg rounded-lg overflow-hidden">
+            <div className="bg-[#8b2346] p-8 flex items-center gap-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-10 w-10 text-white flex-shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                />
+              </svg>
+              <div>
+                <h3 className="text-white text-2xl font-bold">
+                  2026 Salary Guide
+                </h3>
+                <p className="text-white/90 text-base">
+                  Comprehensive Market Data
+                </p>
+              </div>
+            </div>
+            <div className="bg-white p-8 flex-1 flex flex-col">
+              <p className="text-gray-700 text-base leading-relaxed mb-8 flex-1">
+                Unlock up-to-date salary benchmarks, regional variations, and
+                expert insights on compensation to attract and retain top
+                talent.
+              </p>
+              <a
+                href="#"
+                className="bg-[#8b2346] text-white text-center py-4 px-6 rounded-md font-semibold hover:bg-[#7a1f3d] transition-colors flex items-center justify-center gap-2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+                Download Salary Guide
+              </a>
+            </div>
+          </div>
+
+          {/* SAP Hiring Playbook Card */}
+          <div className="flex flex-col shadow-lg rounded-lg overflow-hidden">
+            <div className="bg-[#1e3a5f] p-8 flex items-center gap-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-10 w-10 text-white flex-shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+              <div>
+                <h3 className="text-white text-2xl font-bold">
+                  SAP Hiring Playbook
+                </h3>
+                <p className="text-white/90 text-base">
+                  Proven Hiring Methodologies
+                </p>
+              </div>
+            </div>
+            <div className="bg-white p-8 flex-1 flex flex-col">
+              <p className="text-gray-700 text-base leading-relaxed mb-8 flex-1">
+                A step-by-step framework for identifying, interviewing, and
+                recruiting top-tier SAP talent for your organization.
+              </p>
+              <a
+                href="#"
+                className="bg-[#1e3a5f] text-white text-center py-4 px-6 rounded-md font-semibold hover:bg-[#162d4a] transition-colors flex items-center justify-center gap-2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+                Download Playbook
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [showBanner, setShowBanner] = useState(true);
 
   return (
     <div className="min-h-screen">
-      {showBanner && <AnnouncementBanner onClose={() => setShowBanner(false)} />}
+      {showBanner && (
+        <AnnouncementBanner onClose={() => setShowBanner(false)} />
+      )}
       <Navigation />
       <HeroSection />
       <WhyChooseSection />
+      <EssentialResourcesSection />
     </div>
   );
 }
