@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { Almarai } from "next/font/google";
+import { useContactForm } from "../hooks/useContactForm";
 
 const almarai = Almarai({
   weight: ["700"],
@@ -110,6 +111,49 @@ function Navigation() {
 }
 
 function PlaybookSection() {
+  const { submitForm, isSubmitting, isSuccess, error, reset } = useContactForm();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+    newsletter: false,
+  });
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const result = await submitForm({
+      ...formData,
+      formType: "playbook",
+    });
+
+    if (result.success) {
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+        newsletter: false,
+      });
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const target = e.target as HTMLInputElement;
+    const { name, value, type } = target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? target.checked : value,
+    }));
+  };
+
   return (
     <section className="relative min-h-screen flex items-center py-20 px-8">
       {/* Background Image */}
@@ -136,7 +180,21 @@ function PlaybookSection() {
 
         {/* Form */}
         <div className="max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-lg p-8 shadow-lg">
-          <form className="space-y-6">
+          {isSuccess && (
+            <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+              <p className="text-green-800 text-sm font-medium">
+                Thank you! Your request has been submitted successfully.
+              </p>
+            </div>
+          )}
+
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-800 text-sm font-medium">{error}</p>
+            </div>
+          )}
+
+          <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Name section */}
             <div>
               <label className="block text-sm font-semibold text-gray-900 mb-4">
@@ -149,8 +207,12 @@ function PlaybookSection() {
                   </label>
                   <input
                     type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
                     required
-                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b2346] focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b2346] focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
                 <div>
@@ -159,8 +221,12 @@ function PlaybookSection() {
                   </label>
                   <input
                     type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
                     required
-                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b2346] focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b2346] focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
               </div>
@@ -173,8 +239,13 @@ function PlaybookSection() {
               </label>
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                disabled={isSubmitting}
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 required
-                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b2346] focus:border-transparent transition-all"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b2346] focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
 
@@ -183,7 +254,11 @@ function PlaybookSection() {
               <input
                 type="checkbox"
                 id="newsletter-playbook"
-                className="w-4 h-4 text-[#8b2346] border-gray-300 rounded focus:ring-[#8b2346]"
+                name="newsletter"
+                checked={formData.newsletter}
+                onChange={handleChange}
+                disabled={isSubmitting}
+                className="w-4 h-4 text-[#8b2346] border-gray-300 rounded focus:ring-[#8b2346] disabled:opacity-50 disabled:cursor-not-allowed"
               />
               <label htmlFor="newsletter-playbook" className="text-sm text-[#8b2346]">
                 Sign up for news and updates
@@ -197,7 +272,11 @@ function PlaybookSection() {
               </label>
               <input
                 type="tel"
-                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b2346] focus:border-transparent transition-all"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b2346] focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
 
@@ -208,8 +287,12 @@ function PlaybookSection() {
               </label>
               <input
                 type="text"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                disabled={isSubmitting}
                 required
-                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b2346] focus:border-transparent transition-all"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b2346] focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
 
@@ -219,8 +302,12 @@ function PlaybookSection() {
                 Message
               </label>
               <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                disabled={isSubmitting}
                 rows={4}
-                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b2346] focus:border-transparent transition-all resize-none"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8b2346] focus:border-transparent transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
               ></textarea>
             </div>
 
@@ -228,9 +315,10 @@ function PlaybookSection() {
             <div>
               <button
                 type="submit"
-                className="w-full bg-[#8b2346] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#7a1f3d] transition-colors"
+                disabled={isSubmitting}
+                className="w-full bg-[#8b2346] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#7a1f3d] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Submit
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </div>
           </form>

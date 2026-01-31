@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { Almarai } from "next/font/google";
+import { useContactForm } from "../hooks/useContactForm";
 
 const almarai = Almarai({
   weight: ["700"],
@@ -256,6 +257,40 @@ function MeetTheTeamSection() {
 }
 
 function ContactSection() {
+  const { submitForm, isSubmitting, isSuccess, error, reset } = useContactForm();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  });
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const result = await submitForm({
+      ...formData,
+      formType: "about",
+    });
+    if (result.success) {
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        message: "",
+      });
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
     <section className="bg-[#1e3a5f] py-20 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
@@ -273,7 +308,23 @@ function ContactSection() {
 
           {/* Right side - Contact form */}
           <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-10">
-            <form className="space-y-6">
+            {/* Success message */}
+            {isSuccess && (
+              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p className="text-green-800 font-medium">
+                  Thank you for your message! We&apos;ll be in touch soon.
+                </p>
+              </div>
+            )}
+
+            {/* Error message */}
+            {error && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-red-800 font-medium">{error}</p>
+              </div>
+            )}
+
+            <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Name section label */}
               <div>
                 <label className="block text-sm font-semibold text-gray-900 mb-4">
@@ -289,8 +340,12 @@ function ContactSection() {
                     </label>
                     <input
                       type="text"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
                       required
-                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                   <div>
@@ -300,8 +355,12 @@ function ContactSection() {
                     </label>
                     <input
                       type="text"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
                       required
-                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                 </div>
@@ -314,8 +373,13 @@ function ContactSection() {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  disabled={isSubmitting}
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                   required
-                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
 
@@ -324,7 +388,8 @@ function ContactSection() {
                 <input
                   type="checkbox"
                   id="newsletter"
-                  className="w-4 h-4 text-[#1e3a5f] border-gray-300 rounded focus:ring-[#1e3a5f]"
+                  disabled={isSubmitting}
+                  className="w-4 h-4 text-[#1e3a5f] border-gray-300 rounded focus:ring-[#1e3a5f] disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <label htmlFor="newsletter" className="text-sm text-[#1e3a5f]">
                   Sign up for news and updates
@@ -337,9 +402,13 @@ function ContactSection() {
                   Message <span className="text-gray-500">(required)</span>
                 </label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  disabled={isSubmitting}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                 ></textarea>
               </div>
 
@@ -347,9 +416,10 @@ function ContactSection() {
               <div>
                 <button
                   type="submit"
-                  className="bg-[#1e3a5f] text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-[#162d4a] transition-colors"
+                  disabled={isSubmitting}
+                  className="bg-[#1e3a5f] text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-[#162d4a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Submit
+                  {isSubmitting ? "Submitting..." : "Submit"}
                 </button>
               </div>
             </form>
