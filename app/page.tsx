@@ -149,7 +149,7 @@ function GeometricBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
+      className="absolute inset-0 w-full h-[55vh] md:h-[85vh]"
       style={{ display: "block" }}
     />
   );
@@ -157,7 +157,7 @@ function GeometricBackground() {
 
 function HeroSection() {
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center">
+    <section className="relative h-[56vh] md:h-[86vh] flex flex-col items-center">
       <GeometricBackground />
 
       {/* Shadow overlay matching original */}
@@ -171,22 +171,21 @@ function HeroSection() {
 
       {/* White triangle transition */}
       <div
-        className="absolute bottom-0 left-0 right-0 z-[2] pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 z-[2] pointer-events-none h-[10vh] md:h-[20vh]"
         style={{
           width: "100%",
-          height: "150px",
+          // height: "20vh",
           background: "#e8e8e8",
           clipPath: "polygon(0 100%, 0 70%, 75% 20%, 100% 70%, 100% 100%)",
         }}
       />
 
-      <div className="relative z-10 text-center px-8 py-20">
-        <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-8 py-10 md:py-20">
+        <h1 className="text-white text-2xl md:text-6xl lg:text-7xl font-semibold leading-tight md:max-w-5xl mx-auto ">
           The Crosscheck Advantage:
           <br />
           Better Talent, Faster Results
         </h1>
-
         <div className="flex flex-col sm:flex-row gap-6 justify-center mt-12">
           <a
             href="/contact"
@@ -259,7 +258,7 @@ function WhyChooseSection() {
   return (
     <section className="bg-[#e8e8e8] py-16 px-8">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold italic text-[#8b2346] mb-12">
+        <h2 className="text-3xl md:text-5xl font-bold italic text-[#8b2346] mb-12">
           Why Choose Crosscheck Staffing?
         </h2>
 
@@ -342,7 +341,8 @@ function Footer() {
 }
 
 function ContactSection() {
-  const { submitForm, isSubmitting, isSuccess, error, reset } = useContactForm();
+  const { submitForm, isSubmitting, isSuccess, error, reset } =
+    useContactForm();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -368,7 +368,9 @@ function ContactSection() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -385,22 +387,44 @@ function ContactSection() {
               Let&apos;s Work Together
             </h2>
             <p className="text-xl text-white/90 leading-relaxed mb-8">
-              Ready to find exceptional talent or take the next step in your career?
-              We&apos;re here to help.
+              Ready to find exceptional talent or take the next step in your
+              career? We&apos;re here to help.
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
                   </svg>
                 </div>
                 <span className="text-lg">Quick Response Time</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
                   </svg>
                 </div>
                 <span className="text-lg">Personalized Solutions</span>
@@ -412,7 +436,9 @@ function ContactSection() {
           <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-10">
             {isSuccess && (
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-green-800 font-medium">Thank you! We&apos;ll be in touch soon.</p>
+                <p className="text-green-800 font-medium">
+                  Thank you! We&apos;ll be in touch soon.
+                </p>
               </div>
             )}
             {error && (
