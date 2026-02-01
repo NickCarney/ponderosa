@@ -2,113 +2,8 @@
 
 import Image from "next/image";
 import React, { useState, FormEvent } from "react";
-import { Almarai } from "next/font/google";
 import { useContactForm } from "./hooks/useContactForm";
-
-const almarai = Almarai({
-  weight: ["700"],
-  subsets: ["arabic"],
-});
-
-function AnnouncementBanner({ onClose }: { onClose: () => void }) {
-  return (
-    <div className="bg-[hsla(202.94,100%,26.67%,1)] text-center py-2 px-4 relative">
-      <a
-        href="/salary-guide"
-        className={`text-white font-bold hover:underline ${almarai.className}`}
-      >
-        Check out our brand new 2026 Salary Guide!
-      </a>
-      <button
-        onClick={onClose}
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:opacity-70"
-        aria-label="Close announcement"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-3 w-3"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fillRule="evenodd"
-            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </button>
-    </div>
-  );
-}
-
-function Navigation() {
-  return (
-    <nav className="relative z-50 flex items-center justify-between px-8 py-4 bg-white">
-      <a href="/">
-        <Image
-          src="/logo.png"
-          alt="Crosscheck Staffing"
-          width={220}
-          height={60}
-          priority
-        />
-      </a>
-      <div className="flex items-center gap-8">
-        <div className="relative group">
-          <button className="flex items-center gap-1 text-[#1e3a5f] font-medium hover:text-[#8b2346]">
-            Hiring Trends
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-          <div className="absolute top-full left-0 mt-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div className="bg-[#1e3a5f] rounded-md shadow-lg py-2 min-w-[280px]">
-              <a
-                href="/salary-guide"
-                className="block px-4 py-2 text-white hover:bg-[#8b2346] transition-colors"
-              >
-                2026 Salary Guide
-              </a>
-              <a
-                href="/playbook"
-                className="block px-4 py-2 text-white hover:bg-[#8b2346] transition-colors"
-              >
-                Free Hiring Guide For SAP Talent
-              </a>
-            </div>
-          </div>
-        </div>
-        <a
-          href="/specialties"
-          className="text-[#1e3a5f] font-medium hover:text-[#8b2346]"
-        >
-          Specialties
-        </a>
-        <a
-          href="/about"
-          className="text-[#1e3a5f] font-medium hover:text-[#8b2346]"
-        >
-          About
-        </a>
-        <a
-          href="/contact"
-          className="text-[#1e3a5f] font-medium hover:text-[#8b2346]"
-        >
-          Contact
-        </a>
-      </div>
-    </nav>
-  );
-}
+import { Navigation, AnnouncementBanner } from "./components/Navigation";
 
 function GeometricBackground() {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
@@ -254,7 +149,7 @@ function GeometricBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
+      className="absolute inset-0 w-full h-[55vh] md:h-[85vh]"
       style={{ display: "block" }}
     />
   );
@@ -262,7 +157,7 @@ function GeometricBackground() {
 
 function HeroSection() {
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center">
+    <section className="relative h-[56vh] md:h-[86vh] flex flex-col items-center">
       <GeometricBackground />
 
       {/* Shadow overlay matching original */}
@@ -276,22 +171,21 @@ function HeroSection() {
 
       {/* White triangle transition */}
       <div
-        className="absolute bottom-0 left-0 right-0 z-[2] pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 z-[2] pointer-events-none h-[10vh] md:h-[20vh]"
         style={{
           width: "100%",
-          height: "150px",
+          // height: "20vh",
           background: "#e8e8e8",
           clipPath: "polygon(0 100%, 0 70%, 75% 20%, 100% 70%, 100% 100%)",
         }}
       />
 
-      <div className="relative z-10 text-center px-8 py-20">
-        <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-8 py-10 md:py-20">
+        <h1 className="text-white text-2xl md:text-6xl lg:text-7xl font-semibold leading-tight md:max-w-5xl mx-auto ">
           The Crosscheck Advantage:
           <br />
           Better Talent, Faster Results
         </h1>
-
         <div className="flex flex-col sm:flex-row gap-6 justify-center mt-12">
           <a
             href="/contact"
@@ -364,7 +258,7 @@ function WhyChooseSection() {
   return (
     <section className="bg-[#e8e8e8] py-16 px-8">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold italic text-[#8b2346] mb-12">
+        <h2 className="text-3xl md:text-5xl font-bold italic text-[#8b2346] mb-12">
           Why Choose Crosscheck Staffing?
         </h2>
 
@@ -447,7 +341,8 @@ function Footer() {
 }
 
 function ContactSection() {
-  const { submitForm, isSubmitting, isSuccess, error, reset } = useContactForm();
+  const { submitForm, isSubmitting, isSuccess, error, reset } =
+    useContactForm();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -473,7 +368,9 @@ function ContactSection() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -490,22 +387,44 @@ function ContactSection() {
               Let&apos;s Work Together
             </h2>
             <p className="text-xl text-white/90 leading-relaxed mb-8">
-              Ready to find exceptional talent or take the next step in your career?
-              We&apos;re here to help.
+              Ready to find exceptional talent or take the next step in your
+              career? We&apos;re here to help.
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
                   </svg>
                 </div>
                 <span className="text-lg">Quick Response Time</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
                   </svg>
                 </div>
                 <span className="text-lg">Personalized Solutions</span>
@@ -517,7 +436,9 @@ function ContactSection() {
           <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-10">
             {isSuccess && (
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-green-800 font-medium">Thank you! We&apos;ll be in touch soon.</p>
+                <p className="text-green-800 font-medium">
+                  Thank you! We&apos;ll be in touch soon.
+                </p>
               </div>
             )}
             {error && (
