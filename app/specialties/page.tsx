@@ -8,12 +8,12 @@ function HeroSection() {
     <section
       className="relative py-32 px-8"
       style={{
-        background: "linear-gradient(135deg, #8b2346 0%, #1e3a5f 50%, #2d5080 100%)",
+        background: "linear-gradient(135deg, #64533c 0%, #273927 50%, #3d5a3d 100%)",
       }}
     >
       <div className="max-w-5xl mx-auto text-center">
         <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-          Crosscheck <span className="font-extrabold">Staffing</span>
+          Ponderosa <span className="font-extrabold">Talent Group</span>
         </h1>
 
         <p className="text-white/95 text-xl md:text-2xl mb-12 leading-relaxed">
@@ -88,7 +88,7 @@ function ExpertiseSection() {
 
   const expertiseCards = [
     {
-      color: "#8b2346",
+      color: "#64533c",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +112,7 @@ function ExpertiseSection() {
       ),
       title: "ERP Systems",
       description: "Enterprise Resource Planning solutions that streamline your business operations",
-      buttonColor: "#8b2346",
+      buttonColor: "#64533c",
       skills: [
         {
           name: "SAP",
@@ -137,7 +137,7 @@ function ExpertiseSection() {
       ],
     },
     {
-      color: "#1e3a5f",
+      color: "#273927",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +156,7 @@ function ExpertiseSection() {
       ),
       title: "Data Analytics",
       description: "Transform your data into actionable business insights and competitive advantages",
-      buttonColor: "#1e3a5f",
+      buttonColor: "#273927",
       skills: [
         {
           name: "Business Intelligence",
@@ -231,7 +231,7 @@ function ExpertiseSection() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-8">
-            Our <span className="text-[#8b2346]">Expertise</span>
+            Our <span className="text-[#64533c]">Expertise</span>
           </h2>
           <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
             We specialize in three critical areas of modern business technology, providing top-tier
@@ -348,7 +348,7 @@ function CTASection() {
     <section
       className="py-24 px-8"
       style={{
-        background: "linear-gradient(135deg, #8b2346 0%, #1e3a5f 50%, #2d5080 100%)",
+        background: "linear-gradient(135deg, #64533c 0%, #273927 50%, #3d5a3d 100%)",
       }}
     >
       <div className="max-w-4xl mx-auto text-center">
@@ -363,13 +363,13 @@ function CTASection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/contact"
-            className="bg-white text-[#8b2346] px-10 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
+            className="bg-white text-[#64533c] px-10 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
           >
             Find Talent
           </a>
           <a
             href="/contact"
-            className="bg-white text-[#8b2346] px-10 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
+            className="bg-white text-[#64533c] px-10 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
           >
             Partner With Us
           </a>
@@ -381,7 +381,7 @@ function CTASection() {
 
 function ContactSection() {
   return (
-    <section className="bg-[#1e3a5f] py-20 px-4 md:px-8">
+    <section className="bg-[#273927] py-20 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Contact heading and text */}
@@ -390,7 +390,7 @@ function ContactSection() {
               Contact us
             </h2>
             <p className="text-xl text-white/90 leading-relaxed">
-              Let&apos;s build your tech team together. Partner with Crosscheck Staffing today!
+              Let&apos;s build your tech team together. Partner with Ponderosa Talent Group today!
             </p>
           </div>
 

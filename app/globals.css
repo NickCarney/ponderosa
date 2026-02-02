@@ -3,17 +3,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --brand-blue: #1e3a5f;
-  --brand-burgundy: #8b2346;
-  --brand-gold: #c9a227;
+  --brand-green: #273927;
+  --brand-brown: #64533c;
+  --brand-beige: #e5dfcf;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-brand-blue: var(--brand-blue);
-  --color-brand-burgundy: var(--brand-burgundy);
-  --color-brand-gold: var(--brand-gold);
+  --color-brand-green: var(--brand-green);
+  --color-brand-brown: var(--brand-brown);
+  --color-brand-beige: var(--brand-beige);
   --font-sans: var(--font-exo2);
 }
 

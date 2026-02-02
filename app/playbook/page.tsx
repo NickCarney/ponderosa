@@ -21,7 +21,7 @@ function PlaybookSection() {
 
       <div className="relative z-10 max-w-4xl mx-auto w-full">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#8b2346] mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#64533c] mb-4">
             Download the ERP Hiring Playbook (2025)
           </h1>
           <p className="text-lg text-gray-900">

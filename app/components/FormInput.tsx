@@ -37,14 +37,14 @@ interface FormCheckboxProps {
 
 const accentColors = {
   blue: {
-    label: "text-[#1e3a5f]",
-    ring: "focus:ring-[#1e3a5f]",
-    checkbox: "text-[#1e3a5f]",
+    label: "text-[#273927]",
+    ring: "focus:ring-[#273927]",
+    checkbox: "text-[#273927]",
   },
   burgundy: {
-    label: "text-[#8b2346]",
-    ring: "focus:ring-[#8b2346]",
-    checkbox: "text-[#8b2346]",
+    label: "text-[#64533c]",
+    ring: "focus:ring-[#64533c]",
+    checkbox: "text-[#64533c]",
   },
 };
 

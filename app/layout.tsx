@@ -9,7 +9,7 @@ const exo2 = Exo_2({
 });
 
 export const metadata: Metadata = {
-  title: "Crosscheck Staffing",
+  title: "Ponderosa Talent Group",
   description: "Better Talent, Faster Results",
 };
 

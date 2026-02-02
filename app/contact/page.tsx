@@ -11,7 +11,7 @@ function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left side - Contact form and info */}
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-[#8b2346] mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#64533c] mb-6">
               Contact Us
             </h1>
 
@@ -24,7 +24,7 @@ function ContactSection() {
               <p className="font-semibold text-gray-900">Drake Olson</p>
               <a
                 href="mailto:Dolson@crosscheckstaffing.com"
-                className="text-[#1e3a5f] hover:underline"
+                className="text-[#273927] hover:underline"
               >
                 Dolson@crosscheckstaffing.com
               </a>

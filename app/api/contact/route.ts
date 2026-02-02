@@ -55,7 +55,7 @@ export async function POST(request: Request) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: "Crosscheck Staffing <onboarding@resend.dev>", // You'll need to verify your domain
+      from: "Ponderosa Talent Group <onboarding@resend.dev>", // You'll need to verify your domain
       to: ["Dolson@crosscheckstaffing.com"], // Drake's email
       replyTo: email,
       subject: emailSubject,

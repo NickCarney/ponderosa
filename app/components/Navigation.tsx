@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Almarai } from "next/font/google";
 
 const almarai = Almarai({
@@ -11,16 +12,16 @@ const almarai = Almarai({
 
 export function AnnouncementBanner({ onClose }: { onClose: () => void }) {
   return (
-    <div className="bg-[hsla(202.94,100%,26.67%,1)] text-center py-2 px-4 relative">
+    <div className="bg-[#e5dfcf] text-center py-2 px-4 relative">
       <a
         href="/salary-guide"
-        className={`text-white font-bold hover:underline ${almarai.className}`}
+        className={`text-[#273927] font-bold hover:underline ${almarai.className}`}
       >
         Check out our brand new 2026 Salary Guide!
       </a>
       <button
         onClick={onClose}
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:opacity-70"
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-[#273927] hover:opacity-70"
         aria-label="Close announcement"
       >
         <svg
@@ -45,22 +46,36 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  const isActive = (path: string) => pathname === path;
+  const isHiringTrendsActive =
+    pathname === "/salary-guide" || pathname === "/playbook";
 
   React.useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setDropdownOpen(false);
       }
     }
 
     if (dropdownOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener("touchstart", handleClickOutside as unknown as EventListener);
+      document.addEventListener(
+        "touchstart",
+        handleClickOutside as unknown as EventListener,
+      );
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside as unknown as EventListener);
+      document.removeEventListener(
+        "touchstart",
+        handleClickOutside as unknown as EventListener,
+      );
     };
   }, [dropdownOpen]);
 
@@ -78,18 +93,26 @@ export function Navigation() {
   }, []);
 
   return (
-    <nav className="relative z-50 bg-white">
-      <div className="flex items-center justify-between px-4 md:px-8 py-4">
+    <nav className="relative z-50 bg-[#273927]">
+      <div className="flex items-center justify-between px-4 md:px-8 py-1">
         {/* Logo */}
-        <a href="/">
+        <a href="/" className="flex items-center">
           <Image
-            src="/logo.png"
-            alt="Crosscheck Staffing"
-            width={180}
-            height={50}
-            className="w-[140px] md:w-[220px] h-auto"
+            src="/logo.svg"
+            alt="Ponderosa Talent Group"
+            width={120}
+            height={120}
+            className="h-20 w-auto object-contain scale-150 -mr-2"
             priority
           />
+          <div className="hidden sm:flex flex-col leading-tight -ml-8">
+            <span className="text-[#e5dfcf] font-bold text-xl md:text-2xl">
+              Ponderosa
+            </span>
+            <span className="text-[#e5dfcf]/80 font-semibold text-sm md:text-base">
+              Talent Group
+            </span>
+          </div>
         </a>
 
         {/* Desktop Navigation */}
@@ -97,7 +120,9 @@ export function Navigation() {
           <div ref={dropdownRef} className="relative group">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-1 text-[#1e3a5f] font-medium hover:text-[#8b2346]"
+              className={`flex items-center gap-1 text-[#e5dfcf] font-medium hover:text-white pb-1 border-b-2 transition-colors ${
+                isHiringTrendsActive ? "border-[#e5dfcf]" : "border-transparent"
+              }`}
             >
               Hiring Trends
               <svg
@@ -120,16 +145,16 @@ export function Navigation() {
                   : "opacity-0 invisible group-hover:opacity-100 group-hover:visible"
               }`}
             >
-              <div className="bg-[#1e3a5f] rounded-md shadow-lg py-2 min-w-[280px]">
+              <div className="bg-[#273927] rounded-md shadow-lg py-2 min-w-[280px]">
                 <a
                   href="/salary-guide"
-                  className="block px-4 py-2 text-white hover:bg-[#8b2346] transition-colors"
+                  className="block px-4 py-2 text-white hover:bg-[#64533c] transition-colors"
                 >
                   2026 Salary Guide
                 </a>
                 <a
                   href="/playbook"
-                  className="block px-4 py-2 text-white hover:bg-[#8b2346] transition-colors"
+                  className="block px-4 py-2 text-white hover:bg-[#64533c] transition-colors"
                 >
                   Free Hiring Guide For SAP Talent
                 </a>
@@ -138,19 +163,27 @@ export function Navigation() {
           </div>
           <a
             href="/specialties"
-            className="text-[#1e3a5f] font-medium hover:text-[#8b2346]"
+            className={`text-[#e5dfcf] font-medium hover:text-white pb-1 border-b-2 transition-colors ${
+              isActive("/specialties")
+                ? "border-[#e5dfcf]"
+                : "border-transparent"
+            }`}
           >
             Specialties
           </a>
           <a
             href="/about"
-            className="text-[#1e3a5f] font-medium hover:text-[#8b2346]"
+            className={`text-[#e5dfcf] font-medium hover:text-white pb-1 border-b-2 transition-colors ${
+              isActive("/about") ? "border-[#e5dfcf]" : "border-transparent"
+            }`}
           >
             About
           </a>
           <a
             href="/contact"
-            className="text-[#1e3a5f] font-medium hover:text-[#8b2346]"
+            className={`text-[#e5dfcf] font-medium hover:text-white pb-1 border-b-2 transition-colors ${
+              isActive("/contact") ? "border-[#e5dfcf]" : "border-transparent"
+            }`}
           >
             Contact
           </a>
@@ -159,7 +192,7 @@ export function Navigation() {
         {/* Mobile Hamburger Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-[#1e3a5f] hover:text-[#8b2346]"
+          className="md:hidden p-2 text-[#e5dfcf] hover:text-white"
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {mobileMenuOpen ? (
@@ -202,12 +235,12 @@ export function Navigation() {
           mobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="px-4 pb-4 border-t border-gray-100">
+        <div className="px-4 pb-4 border-t border-[#e5dfcf]/20">
           {/* Hiring Trends Dropdown */}
           <div className="py-2">
             <button
               onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-              className="flex items-center justify-between w-full py-3 text-[#1e3a5f] font-medium"
+              className="flex items-center justify-between w-full py-3 text-[#e5dfcf] font-medium"
             >
               Hiring Trends
               <svg
@@ -225,19 +258,21 @@ export function Navigation() {
             </button>
             <div
               className={`overflow-hidden transition-all duration-200 ${
-                mobileDropdownOpen ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
+                mobileDropdownOpen
+                  ? "max-h-[200px] opacity-100"
+                  : "max-h-0 opacity-0"
               }`}
             >
               <div className="pl-4 space-y-1">
                 <a
                   href="/salary-guide"
-                  className="block py-2 text-[#1e3a5f] hover:text-[#8b2346]"
+                  className="block py-2 text-[#e5dfcf] hover:text-white"
                 >
                   2026 Salary Guide
                 </a>
                 <a
                   href="/playbook"
-                  className="block py-2 text-[#1e3a5f] hover:text-[#8b2346]"
+                  className="block py-2 text-[#e5dfcf] hover:text-white"
                 >
                   Free Hiring Guide For SAP Talent
                 </a>
@@ -248,19 +283,19 @@ export function Navigation() {
           {/* Other Nav Links */}
           <a
             href="/specialties"
-            className="block py-3 text-[#1e3a5f] font-medium hover:text-[#8b2346] border-t border-gray-100"
+            className="block py-3 text-[#e5dfcf] font-medium hover:text-white border-t border-[#e5dfcf]/20"
           >
             Specialties
           </a>
           <a
             href="/about"
-            className="block py-3 text-[#1e3a5f] font-medium hover:text-[#8b2346] border-t border-gray-100"
+            className="block py-3 text-[#e5dfcf] font-medium hover:text-white border-t border-[#e5dfcf]/20"
           >
             About
           </a>
           <a
             href="/contact"
-            className="block py-3 text-[#1e3a5f] font-medium hover:text-[#8b2346] border-t border-gray-100"
+            className="block py-3 text-[#e5dfcf] font-medium hover:text-white border-t border-[#e5dfcf]/20"
           >
             Contact
           </a>

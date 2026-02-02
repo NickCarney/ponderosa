@@ -11,18 +11,18 @@ function MeetTheTeamSection() {
     <section className="bg-gradient-to-b from-gray-50 to-white pt-20 pb-16 px-8">
       <div className="max-w-7xl mx-auto text-center">
         <h1 className="text-5xl md:text-6xl font-bold mb-6">
-          <span className="text-[#1e3a5f]">Meet the</span>{" "}
-          <span className="text-[#8b2346]">Team</span>
+          <span className="text-[#273927]">Meet the</span>{" "}
+          <span className="text-[#64533c]">Team</span>
         </h1>
 
         <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-16 max-w-4xl mx-auto">
           At{" "}
-          <span className="text-[#1e3a5f] font-semibold">
-            Crosscheck Staffing
+          <span className="text-[#273927] font-semibold">
+            Ponderosa Talent Group
           </span>
           , we specialize in connecting top-tier IT professionals with
           organizations across North America. We provide{" "}
-          <span className="text-[#1e3a5f] font-semibold">
+          <span className="text-[#273927] font-semibold">
             contract, contract-to-hire, and direct-hire
           </span>{" "}
           staffing solutions, ensuring businesses have the flexibility to scale
@@ -46,11 +46,11 @@ function MeetTheTeamSection() {
             <div className="border-t-2 border-gray-300 pt-4">
               <div className="flex items-center justify-between mb-2">
                 <div>
-                  <h3 className="text-2xl font-semibold text-[#1e3a5f]">
+                  <h3 className="text-2xl font-semibold text-[#273927]">
                     Drake Olson
                   </h3>
                   {expandedMember === "drake" && (
-                    <p className="text-[#8b2346] font-medium mt-1">
+                    <p className="text-[#64533c] font-medium mt-1">
                       Co-Founder
                     </p>
                   )}
@@ -61,7 +61,7 @@ function MeetTheTeamSection() {
                       expandedMember === "drake" ? null : "drake",
                     )
                   }
-                  className="text-[#1e3a5f] hover:text-[#8b2346] transition-all"
+                  className="text-[#273927] hover:text-[#64533c] transition-all"
                   aria-label={
                     expandedMember === "drake"
                       ? "Collapse details"
@@ -109,9 +109,9 @@ function MeetTheTeamSection() {
                   opacity: expandedMember === "drake" ? 1 : 0,
                 }}
               >
-                <div className="pt-4 space-y-4 text-[#8b2346]">
+                <div className="pt-4 space-y-4 text-[#64533c]">
                   <p className="leading-relaxed">
-                    Drake helped co-found Crosscheck Staffing after five years
+                    Drake helped co-found Ponderosa Talent Group after five years
                     with two of the largest IT staffing agencies where he was a
                     consistent top-performer both as a Recruiter & Account
                     Executive. He prides himself on a personalized approach,
@@ -123,7 +123,7 @@ function MeetTheTeamSection() {
                   <p className="leading-relaxed">
                     Drake&apos;s primary focuses are Data & Analytics, Cloud
                     Engineering, and IT Security. Drake wanted to build
-                    Crosscheck Staffing as he believes there is a market for
+                    Ponderosa Talent Group as he believes there is a market for
                     organizations that can provide high-quality delivery without
                     sacrificing an honest and collaborative style where everyone
                     wins.
@@ -152,7 +152,7 @@ function MeetTheTeamSection() {
 
 function ContactSection() {
   return (
-    <section className="bg-[#1e3a5f] py-20 px-4 md:px-8">
+    <section className="bg-[#273927] py-20 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Contact heading and text */}

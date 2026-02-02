@@ -4,7 +4,7 @@ export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-[#1e3a5f] py-6 px-4">
+      <header className="bg-[#273927] py-6 px-4">
         <div className="max-w-4xl mx-auto">
           <Link
             href="/"
@@ -29,7 +29,7 @@ export default function PrivacyPolicy() {
 
       {/* Content */}
       <main className="max-w-4xl mx-auto py-12 px-4 md:px-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#1e3a5f] mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#273927] mb-4">
           Privacy Policy
         </h1>
         <p className="text-gray-600 mb-12">
@@ -39,11 +39,11 @@ export default function PrivacyPolicy() {
         <div className="prose prose-lg max-w-none space-y-8">
           {/* Section 1 */}
           <section>
-            <h2 className="text-2xl font-bold text-[#8b2346] mb-4">
+            <h2 className="text-2xl font-bold text-[#64533c] mb-4">
               1. Information We Collect
             </h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Crosscheck Staffing gathers several categories of data:
+              Ponderosa Talent Group gathers several categories of data:
             </p>
             <ul className="list-disc pl-6 space-y-2 text-gray-700">
               <li>
@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 2 */}
           <section>
-            <h2 className="text-2xl font-bold text-[#8b2346] mb-4">
+            <h2 className="text-2xl font-bold text-[#64533c] mb-4">
               2. How We Use Your Information
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -79,7 +79,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 3 */}
           <section>
-            <h2 className="text-2xl font-bold text-[#8b2346] mb-4">
+            <h2 className="text-2xl font-bold text-[#64533c] mb-4">
               3. Sharing Your Information
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -92,7 +92,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 4 */}
           <section>
-            <h2 className="text-2xl font-bold text-[#8b2346] mb-4">
+            <h2 className="text-2xl font-bold text-[#64533c] mb-4">
               4. Cookies and Tracking Technologies
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -105,7 +105,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 5 */}
           <section>
-            <h2 className="text-2xl font-bold text-[#8b2346] mb-4">
+            <h2 className="text-2xl font-bold text-[#64533c] mb-4">
               5. Your Rights and Choices
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -113,7 +113,7 @@ export default function PrivacyPolicy() {
               marketing communication opt-out. Contact:{" "}
               <a
                 href="mailto:bheimple@crosscheckstaffing.com"
-                className="text-[#1e3a5f] hover:underline"
+                className="text-[#273927] hover:underline"
               >
                 bheimple@crosscheckstaffing.com
               </a>
@@ -122,7 +122,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 6 */}
           <section>
-            <h2 className="text-2xl font-bold text-[#8b2346] mb-4">
+            <h2 className="text-2xl font-bold text-[#64533c] mb-4">
               6. Data Security
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -133,7 +133,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 7 */}
           <section>
-            <h2 className="text-2xl font-bold text-[#8b2346] mb-4">
+            <h2 className="text-2xl font-bold text-[#64533c] mb-4">
               7. Children&apos;s Privacy
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -144,7 +144,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 8 */}
           <section>
-            <h2 className="text-2xl font-bold text-[#8b2346] mb-4">
+            <h2 className="text-2xl font-bold text-[#64533c] mb-4">
               8. Policy Updates
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -154,15 +154,15 @@ export default function PrivacyPolicy() {
 
           {/* Section 9 */}
           <section>
-            <h2 className="text-2xl font-bold text-[#8b2346] mb-4">
+            <h2 className="text-2xl font-bold text-[#64533c] mb-4">
               9. Contact Information
             </h2>
             <div className="text-gray-700 leading-relaxed">
-              <p className="font-semibold">Crosscheck Staffing</p>
+              <p className="font-semibold">Ponderosa Talent Group</p>
               <p>1100 Johnson Rd. #16061, Golden, CO 80402</p>
               <a
                 href="mailto:bheimple@crosscheckstaffing.com"
-                className="text-[#1e3a5f] hover:underline"
+                className="text-[#273927] hover:underline"
               >
                 bheimple@crosscheckstaffing.com
               </a>

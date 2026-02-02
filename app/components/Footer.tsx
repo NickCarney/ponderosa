@@ -1,17 +1,17 @@
 export function Footer() {
   return (
-    <footer className="bg-[#e8e8e8] py-12 px-4 md:px-8">
+    <footer className="bg-[#e5dfcf] py-12 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Left - Logo and Privacy Policy */}
           <div>
             <h3 className="text-3xl font-bold mb-6">
-              <span className="text-[#8b2346]">Crosscheck</span>{" "}
-              <span className="text-[#1e3a5f]">Staffing</span>
+              <span className="text-[#64533c]">Ponderosa</span>{" "}
+              <span className="text-[#273927]">Talent Group</span>
             </h3>
             <a
               href="/privacy-policy"
-              className="text-[#1e3a5f] underline hover:text-[#8b2346] transition-colors"
+              className="text-[#273927] underline hover:text-[#64533c] transition-colors"
             >
               Privacy Policy
             </a>
@@ -34,7 +34,7 @@ export function Footer() {
               <p className="font-semibold">Drake Olson</p>
               <a
                 href="mailto:Dolson@crosscheckstaffing.com"
-                className="text-[#8b2346] hover:underline"
+                className="text-[#64533c] hover:underline"
               >
                 Dolson@crosscheckstaffing.com
               </a>
