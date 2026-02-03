@@ -509,7 +509,7 @@ function EssentialResourcesSection() {
                 talent.
               </p>
               <a
-                href="#"
+                href="/salary-guide"
                 className="bg-[#64533c] text-white text-center py-4 px-6 rounded-md font-semibold hover:bg-[#544430] transition-colors flex items-center justify-center gap-2"
               >
                 <svg
@@ -563,7 +563,7 @@ function EssentialResourcesSection() {
                 recruiting top-tier SAP talent for your organization.
               </p>
               <a
-                href="#"
+                href="/playbook"
                 className="bg-[#273927] text-white text-center py-4 px-6 rounded-md font-semibold hover:bg-[#1d2b1d] transition-colors flex items-center justify-center gap-2"
               >
                 <svg
