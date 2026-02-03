@@ -6,7 +6,7 @@ import { FormMessage } from "./FormMessage";
 import { FormInput, FormTextarea, FormCheckbox } from "./FormInput";
 import { Button } from "./Button";
 
-export type FormType = "homepage" | "contact" | "about" | "specialties" | "playbook";
+export type FormType = "homepage" | "contact" | "about" | "specialties" | "playbook" | "salary-guide";
 
 interface ContactFormProps {
   formType: FormType;
