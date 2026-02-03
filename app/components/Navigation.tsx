@@ -109,7 +109,7 @@ export function Navigation() {
             <span className="text-[#e5dfcf] font-bold text-xl md:text-2xl">
               Ponderosa
             </span>
-            <span className="text-[#e5dfcf]/80 font-semibold text-sm md:text-base">
+            <span className="text-[#e5dfcf]/80 font-semibold text-sm md:text-base text-center">
               Talent Group
             </span>
           </div>
