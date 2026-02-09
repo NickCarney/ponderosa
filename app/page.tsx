@@ -1,7 +1,22 @@
 "use client";
 
 import React, { useState } from "react";
-import { Navigation, AnnouncementBanner, Footer, ContactForm } from "./components";
+import {
+  Navigation,
+  AnnouncementBanner,
+  Footer,
+  ContactForm,
+  VersionToggle,
+  HeroSectionB,
+  WhyChooseSectionB,
+  EssentialResourcesSectionB,
+  ContactSectionB,
+  HeroSectionC,
+  WhyChooseSectionC,
+  EssentialResourcesSectionC,
+  ContactSectionC,
+} from "./components";
+import type { DesignVersion } from "./components";
 
 function GeometricBackground() {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
@@ -592,6 +607,7 @@ function EssentialResourcesSection() {
 
 export default function Home() {
   const [showBanner, setShowBanner] = useState(true);
+  const [version, setVersion] = useState<DesignVersion>("A");
 
   return (
     <div className="min-h-screen">
@@ -599,11 +615,30 @@ export default function Home() {
         <AnnouncementBanner onClose={() => setShowBanner(false)} />
       )}
       <Navigation />
-      <HeroSection />
-      <WhyChooseSection />
-      <EssentialResourcesSection />
-      <ContactSection />
+
+      {/* Hero */}
+      {version === "A" && <HeroSection />}
+      {version === "B" && <HeroSectionB />}
+      {version === "C" && <HeroSectionC />}
+
+      {/* Why Choose */}
+      {version === "A" && <WhyChooseSection />}
+      {version === "B" && <WhyChooseSectionB />}
+      {version === "C" && <WhyChooseSectionC />}
+
+      {/* Essential Resources */}
+      {version === "A" && <EssentialResourcesSection />}
+      {version === "B" && <EssentialResourcesSectionB />}
+      {version === "C" && <EssentialResourcesSectionC />}
+
+      {/* Contact */}
+      {version === "A" && <ContactSection />}
+      {version === "B" && <ContactSectionB />}
+      {version === "C" && <ContactSectionC />}
+
       <Footer />
+
+      <VersionToggle current={version} onChange={setVersion} />
     </div>
   );
 }
