@@ -6,7 +6,13 @@ import { FormMessage } from "./FormMessage";
 import { FormInput, FormTextarea, FormCheckbox } from "./FormInput";
 import { Button } from "./Button";
 
-export type FormType = "homepage" | "contact" | "about" | "specialties" | "playbook" | "salary-guide";
+export type FormType =
+  | "homepage"
+  | "contact"
+  | "about"
+  | "specialties"
+  | "playbook"
+  | "salary-guide";
 
 interface ContactFormProps {
   formType: FormType;
@@ -43,7 +49,8 @@ export function ContactForm({
   messageRequired = true,
   messageRows = 5,
 }: ContactFormProps) {
-  const { submitForm, isSubmitting, isSuccess, error, reset } = useContactForm();
+  const { submitForm, isSubmitting, isSuccess, error, reset } =
+    useContactForm();
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -76,7 +83,7 @@ export function ContactForm({
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const target = e.target as HTMLInputElement;
     const { name, value, type } = target;
@@ -187,6 +194,7 @@ export function ContactForm({
         {/* Submit button */}
         <div>
           <Button
+            className="cursor-pointer"
             type="submit"
             variant={buttonVariant}
             size="large"
