@@ -33,13 +33,16 @@ export function Footer() {
             <div className="text-gray-700">
               <p className="font-semibold">Drake Olson</p>
               <a
-                href="mailto:Dolson@crosscheckstaffing.com"
+                href="mailto:drake.olson@ponderosatalent.com"
                 className="text-[#64533c] hover:underline"
               >
-                Dolson@crosscheckstaffing.com
+                drake.olson@ponderosatalent.com
               </a>
               <br />
-              <a href="tel:+17206354186" className="text-gray-700 hover:underline">
+              <a
+                href="tel:+17206354186"
+                className="text-gray-700 hover:underline"
+              >
                 (720) 635-4186
               </a>
             </div>

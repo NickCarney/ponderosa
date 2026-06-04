@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Navigation, AnnouncementBanner, Footer, ContactForm } from "../components";
+import {
+  Navigation,
+  AnnouncementBanner,
+  Footer,
+  ContactForm,
+} from "../components";
 
 function ContactSection() {
   return (
@@ -16,17 +21,19 @@ function ContactSection() {
             </h1>
 
             <p className="text-gray-700 leading-relaxed mb-8">
-              If you&apos;re interested in collaborating, please provide your information, and we will contact you soon. We look forward to connecting with you.
+              If you&apos;re interested in collaborating, please provide your
+              information, and we will contact you soon. We look forward to
+              connecting with you.
             </p>
 
             {/* Contact information */}
             <div className="mb-8">
               <p className="font-semibold text-gray-900">Drake Olson</p>
               <a
-                href="mailto:Dolson@crosscheckstaffing.com"
+                href="mailto:drake.olson@ponderosatalent.com"
                 className="text-[#273927] hover:underline"
               >
-                Dolson@crosscheckstaffing.com
+                drake.olson@ponderosatalent.com
               </a>
               <br />
               <span className="text-gray-700">(720) 635-4186</span>

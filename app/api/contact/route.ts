@@ -56,7 +56,7 @@ export async function POST(request: Request) {
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: "Ponderosa Talent Group <onboarding@resend.dev>", // You'll need to verify your domain
-      to: ["Dolson@crosscheckstaffing.com"], // Drake's email
+      to: ["drake.olson@ponderosatalent.com"], // Drake's email
       replyTo: email,
       subject: emailSubject,
       html: emailHtml,
@@ -66,26 +66,26 @@ export async function POST(request: Request) {
       console.error("Resend error:", error);
       return NextResponse.json(
         { error: "Failed to send email" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     return NextResponse.json(
       { success: true, message: "Email sent successfully", data },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Validation error", details: error.issues },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     console.error("Unexpected error:", error);
     return NextResponse.json(
       { error: "An unexpected error occurred" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
