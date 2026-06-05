@@ -153,6 +153,8 @@ export function ContactForm({
             value={formData.phone || ""}
             onChange={handleChange}
             disabled={isSubmitting}
+            placeholder="(555) 555-5555"
+            pattern="^\+?1?\s*\(?\d{3}\)?[\s.\-]?\d{3}[\s.\-]?\d{4}$"
           />
         )}
 

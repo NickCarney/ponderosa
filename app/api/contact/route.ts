@@ -10,7 +10,10 @@ const contactSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email({ message: "Invalid email address" }),
-  phone: z.string().optional(),
+  phone: z.string().optional().refine(
+    (val) => !val || /^\+?1?\s*\(?\d{3}\)?[\s.\-]?\d{3}[\s.\-]?\d{4}$/.test(val),
+    { message: "Please enter a valid US phone number" }
+  ),
   company: z.string().optional(),
   message: z.string().min(1, "Message is required"),
   newsletter: z.boolean().optional(),
