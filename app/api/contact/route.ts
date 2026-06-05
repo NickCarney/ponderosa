@@ -9,7 +9,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const contactSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
+  email: z.string().email({ message: "Invalid email address" }),
   phone: z.string().optional(),
   company: z.string().optional(),
   message: z.string().min(1, "Message is required"),
@@ -54,8 +54,8 @@ export async function POST(request: Request) {
       <p><small>Form Type: ${formType}</small></p>
     `;
 
-    // Log to Google Sheets (non-blocking — sheet failure won't break the form)
-    appendFormSubmission({
+    // Log to Google Sheets
+    await appendFormSubmission({
       timestamp: new Date().toISOString(),
       formType,
       firstName,
@@ -67,25 +67,21 @@ export async function POST(request: Request) {
       newsletter,
     }).catch((err) => console.error("Google Sheets logging failed:", err));
 
-    // Send email using Resend
-    const { data, error } = await resend.emails.send({
-      from: "Ponderosa Talent Group <onboarding@resend.dev>", // You'll need to verify your domain
-      to: ["drake.olson@ponderosatalent.com"], // Drake's email
+    // Send email using Resend (failure is logged but does not block success)
+    const { error: emailError } = await resend.emails.send({
+      from: "Ponderosa Talent Group <onboarding@resend.dev>",
+      to: ["drake.olson@ponderosatalent.com"],
       replyTo: email,
       subject: emailSubject,
       html: emailHtml,
     });
 
-    if (error) {
-      console.error("Resend error:", error);
-      return NextResponse.json(
-        { error: "Failed to send email" },
-        { status: 500 },
-      );
+    if (emailError) {
+      console.error("Resend error:", emailError);
     }
 
     return NextResponse.json(
-      { success: true, message: "Email sent successfully", data },
+      { success: true, message: "Submission received" },
       { status: 200 },
     );
   } catch (error) {
