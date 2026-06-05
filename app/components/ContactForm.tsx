@@ -19,7 +19,7 @@ interface ContactFormProps {
   showNewsletter?: boolean;
   showPhone?: boolean;
   showCompany?: boolean;
-  buttonVariant?: "primary" | "burgundy" | "burgundy-gradient" | "amber";
+  buttonVariant?: "primary" | "burgundy" | "burgundy-gradient" | "amber" | "outline";
   buttonText?: string;
   successMessage?: string;
   messageRequired?: boolean;
@@ -41,7 +41,7 @@ export function ContactForm({
   showNewsletter = false,
   showPhone = false,
   showCompany = false,
-  buttonVariant = "amber",
+  buttonVariant = "outline",
   buttonText = "Submit",
   successMessage = "Thank you! We'll be in touch soon.",
   messageRequired = true,
@@ -182,6 +182,7 @@ export function ContactForm({
             type="submit"
             variant={buttonVariant}
             size="large"
+            fullWidth
             disabled={isSubmitting}
           >
             {isSubmitting ? "Sending..." : buttonText}

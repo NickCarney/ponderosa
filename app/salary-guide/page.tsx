@@ -53,7 +53,7 @@ function SalaryGuideSection() {
               showNewsletter
               showPhone
               showCompany
-              buttonVariant="burgundy"
+              buttonVariant="outline"
               buttonText="Send me the guide →"
               successMessage="You're on the list. We'll send the guide to your inbox shortly."
               messageRequired={false}
