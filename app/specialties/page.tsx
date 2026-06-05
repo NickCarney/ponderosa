@@ -1,378 +1,95 @@
 "use client";
 
 import React, { useState } from "react";
-import { Navigation, AnnouncementBanner, Footer, ContactForm } from "../components";
+import {
+  Navigation,
+  AnnouncementBanner,
+  Footer,
+  ContactForm,
+} from "../components";
 
-function HeroSection() {
+const SPECIALTIES = [
+  {
+    num: "→",
+    title: "AI Roles",
+    description:
+      "ML, applied AI, research, and forward-deployed engineers for teams building on the frontier — vetted for who's actually shipped models to production, not just fine-tuned them.",
+  },
+  {
+    num: "→",
+    title: "SWE Roles",
+    description:
+      "Full-stack, backend, and product engineers — the core builders who turn roadmap into shipped software, vetted for range, ownership, and sound judgment under speed.",
+  },
+  {
+    num: "→",
+    title: "Platform & Cloud",
+    description:
+      "Infrastructure, DevOps, SRE, and platform engineers who keep systems fast, reliable, and scalable — the hires that make every other engineer more productive.",
+  },
+  {
+    num: "→",
+    title: "Mobile",
+    description:
+      "iOS, Android, and cross-platform engineers (React Native, Expo, Flutter) for teams whose product lives in your customer's pocket — sourced for craft and shipping cadence.",
+  },
+  {
+    num: "→",
+    title: "Engineering Leadership",
+    description:
+      "Engineering managers, leads, and heads of engineering who can hire, ship, and set the technical bar — the hires that shape every hire after them.",
+  },
+];
+
+function PageHero() {
   return (
-    <section
-      className="relative py-32 px-8"
-      style={{
-        background: "linear-gradient(135deg, #64533c 0%, #273927 50%, #3d5a3d 100%)",
-      }}
-    >
-      <div className="max-w-5xl mx-auto text-center">
-        <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-          Ponderosa <span className="font-extrabold">Talent Group</span>
-        </h1>
-
-        <p className="text-white/95 text-xl md:text-2xl mb-12 leading-relaxed">
-          Connecting exceptional talent with transformative technology opportunities
+    <section className="page-hero" style={{ background: "var(--bone)" }}>
+      <div className="wrap">
+        <p className="eyebrow">Specialties</p>
+        <h1>What we recruit for.</h1>
+        <p>
+          Where Ponderosa goes deep — the engineering roles we run end-to-end,
+          one search at a time. Contingency, no retainer.
         </p>
-
-        <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-          {/* Expert Talent */}
-          <div className="flex items-center gap-3 text-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 flex-shrink-0"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-              />
-            </svg>
-            <span className="font-medium text-lg">Expert Talent</span>
-          </div>
-
-          {/* Enterprise Solutions */}
-          <div className="flex items-center gap-3 text-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 flex-shrink-0"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-              />
-            </svg>
-            <span className="font-medium text-lg">Enterprise Solutions</span>
-          </div>
-
-          {/* Secure & Compliant */}
-          <div className="flex items-center gap-3 text-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 flex-shrink-0"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-              />
-            </svg>
-            <span className="font-medium text-lg">Secure &amp; Compliant</span>
-          </div>
-        </div>
       </div>
     </section>
   );
 }
 
-function ExpertiseSection() {
-  const [expandedCard, setExpandedCard] = useState<number | null>(null);
-
-  const expertiseCards = [
-    {
-      color: "#64533c",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </svg>
-      ),
-      title: "ERP Systems",
-      description: "Enterprise Resource Planning solutions that streamline your business operations",
-      buttonColor: "#64533c",
-      skills: [
-        {
-          name: "SAP",
-          description: "Complete SAP ecosystem including S/4HANA, SuccessFactors, and Ariba",
-        },
-        {
-          name: "Oracle Fusion",
-          description: "Cloud-based ERP, HCM, and Supply Chain Management solutions",
-        },
-        {
-          name: "NetSuite",
-          description: "Integrated business management suite for growing companies",
-        },
-        {
-          name: "Workday",
-          description: "Human Capital Management and Financial Management platforms",
-        },
-        {
-          name: "Dynamics 365",
-          description: "Microsoft business applications for CRM and ERP needs",
-        },
-      ],
-    },
-    {
-      color: "#273927",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-          />
-        </svg>
-      ),
-      title: "Data Analytics",
-      description: "Transform your data into actionable business insights and competitive advantages",
-      buttonColor: "#273927",
-      skills: [
-        {
-          name: "Business Intelligence",
-          description: "Power BI, Tableau, and Qlik/Sense visualization experts",
-        },
-        {
-          name: "Data Engineering",
-          description: "ETL/ELT pipelines, data warehousing, and cloud platforms",
-        },
-        {
-          name: "Advanced Analytics",
-          description: "Machine learning, predictive modeling, and statistical analysis",
-        },
-        {
-          name: "Data Governance",
-          description: "Data quality, compliance, and management frameworks",
-        },
-        {
-          name: "Cloud Analytics",
-          description: "AWS, Azure, and GCP data platform specialists",
-        },
-      ],
-    },
-    {
-      color: "#6b7280",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-          />
-        </svg>
-      ),
-      title: "IT Security",
-      description: "Comprehensive cybersecurity solutions to protect your digital infrastructure",
-      buttonColor: "#6b7280",
-      skills: [
-        {
-          name: "Cybersecurity Strategy",
-          description: "Risk assessment, security architecture, and compliance frameworks",
-        },
-        {
-          name: "Network Security",
-          description: "Firewalls, intrusion detection, and network monitoring solutions",
-        },
-        {
-          name: "Identity Management",
-          description: "Access control, authentication, and privileged account management",
-        },
-        {
-          name: "Security Operations",
-          description: "SOC management, incident response, and threat hunting",
-        },
-        {
-          name: "Compliance & Audit",
-          description: "GDPR, SOX, HIPAA, and industry-specific regulatory requirements",
-        },
-      ],
-    },
-  ];
-
-  return (
-    <section className="bg-white py-20 px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">
-            Our <span className="text-[#64533c]">Expertise</span>
-          </h2>
-          <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
-            We specialize in three critical areas of modern business technology, providing top-tier
-            professionals who drive digital transformation and operational excellence.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 items-start">
-          {expertiseCards.map((card, cardIndex) => {
-            const isExpanded = expandedCard === cardIndex;
-            const handleToggle = () => {
-              setExpandedCard(isExpanded ? null : cardIndex);
-            };
-            return (
-              <div
-                key={cardIndex}
-                className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col"
-                style={{ borderTop: `4px solid ${card.color}` }}
-              >
-                <div className="p-8 flex flex-col h-full">
-                  <div className="flex-1" style={{ minHeight: "240px" }}>
-                    <div className="flex items-start justify-between mb-6">
-                      <div
-                        className="w-14 h-14 rounded-full flex items-center justify-center"
-                        style={{ backgroundColor: `${card.color}20`, color: card.color }}
-                      >
-                        {card.icon}
-                      </div>
-                      <button
-                        onClick={handleToggle}
-                        className="text-gray-400 hover:text-gray-600 transition-transform"
-                        aria-label={isExpanded ? "Collapse" : "Expand"}
-                        style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                      {card.title}
-                    </h3>
-
-                    <p className="text-gray-600 leading-relaxed mb-8">
-                      {card.description}
-                    </p>
-
-                    <div
-                      className="overflow-hidden transition-all duration-1000 ease-in-out"
-                      style={{
-                        maxHeight: isExpanded ? "2000px" : "0px",
-                        opacity: isExpanded ? 1 : 0,
-                        marginBottom: isExpanded ? "2rem" : "0rem",
-                      }}
-                    >
-                      <div>
-                        <h4 className="text-sm font-bold text-gray-900 mb-4 tracking-wide">
-                          SPECIALIZED SKILLS
-                        </h4>
-                        <ul className="space-y-3">
-                          {card.skills.map((skill, skillIndex) => (
-                            <li
-                              key={skillIndex}
-                              className="flex items-start gap-3 p-3 rounded-lg border border-gray-200 bg-gray-50/50"
-                            >
-                              <div
-                                className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                                style={{ backgroundColor: card.color }}
-                              />
-                              <div>
-                                <h5 className="font-semibold text-gray-900 mb-1">
-                                  {skill.name}
-                                </h5>
-                                <p className="text-sm text-gray-600 leading-relaxed">
-                                  {skill.description}
-                                </p>
-                              </div>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={handleToggle}
-                    className="w-full py-3 px-6 rounded-lg text-white font-semibold hover:opacity-90 transition-opacity"
-                    style={{ backgroundColor: card.buttonColor }}
-                  >
-                    {isExpanded ? "View Less" : "Explore Skills"}
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CTASection() {
+function SpecialtiesGrid() {
   return (
     <section
-      className="py-24 px-8"
-      style={{
-        background: "linear-gradient(135deg, #64533c 0%, #273927 50%, #3d5a3d 100%)",
-      }}
+      className="section-block"
+      style={{ paddingTop: "44px", background: "var(--bone)" }}
     >
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          Ready to Transform Your <span className="font-extrabold">Technology Team?</span>
-        </h2>
+      <div className="wrap">
+        <div className="principles">
+          {SPECIALTIES.map((s) => (
+            <div key={s.title} className="pcard">
+              <div className="num">{s.num}</div>
+              <h3>{s.title}</h3>
+              <p>{s.description}</p>
+            </div>
+          ))}
+        </div>
 
-        <p className="text-white/95 text-lg md:text-xl mb-10 leading-relaxed max-w-3xl mx-auto">
-          Let us connect you with exceptional professionals who will drive your business forward. Our expert talent solutions are tailored to your unique needs and industry requirements.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="/contact"
-            className="bg-white text-[#64533c] px-10 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
-          >
-            Find Talent
-          </a>
-          <a
-            href="/contact"
-            className="bg-white text-[#64533c] px-10 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
-          >
-            Partner With Us
-          </a>
+        {/* The model */}
+        <div style={{ marginTop: "34px" }}>
+          <div className="svc-band">
+            <div className="section-head" style={{ margin: 0 }}>
+              <h2>The model</h2>
+              <p>
+                Contingency: you pay a percentage of first-year base, due only
+                when a candidate we sourced is hired. No retainer, no upfront
+                risk. You only pay when we deliver.
+              </p>
+            </div>
+            <div style={{ marginTop: "24px" }}>
+              <a href="/contact" className="btn-primary">
+                Start a Search →
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -381,26 +98,57 @@ function CTASection() {
 
 function ContactSection() {
   return (
-    <section className="bg-[#273927] py-20 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Contact heading and text */}
-          <div className="text-white">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Contact us
+    <section
+      className="section-block"
+      style={{ background: "var(--pine-900)" }}
+    >
+      <div className="wrap">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "64px",
+            alignItems: "center",
+          }}
+          className="two-col"
+        >
+          <div style={{ color: "var(--cream)" }}>
+            <h2
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 600,
+                fontSize: "clamp(32px, 5vw, 52px)",
+                letterSpacing: "-0.02em",
+                lineHeight: 1.05,
+                marginBottom: "16px",
+              }}
+            >
+              Let&apos;s build your team.
             </h2>
-            <p className="text-xl text-white/90 leading-relaxed">
-              Let&apos;s build your tech team together. Partner with Ponderosa Talent Group today!
+            <p
+              style={{
+                fontSize: "18px",
+                color: "var(--sage)",
+                lineHeight: 1.6,
+              }}
+            >
+              Tell us about the role. We&apos;ll come back with an honest read
+              on whether Ponderosa is the right partner.
             </p>
           </div>
-
-          {/* Right side - Contact form */}
-          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-10">
+          <div
+            style={{
+              background: "var(--cream)",
+              borderRadius: "22px",
+              padding: "36px 32px",
+              boxShadow: "var(--shadow)",
+            }}
+          >
             <ContactForm
               formType="specialties"
               showNewsletter
-              buttonText="Submit"
-              successMessage="Thank you for your message! We'll get back to you soon."
+              buttonText="Send"
+              successMessage="Thank you! We'll get back to you soon."
             />
           </div>
         </div>
@@ -418,9 +166,8 @@ export default function SpecialtiesPage() {
         <AnnouncementBanner onClose={() => setShowBanner(false)} />
       )}
       <Navigation />
-      <HeroSection />
-      <ExpertiseSection />
-      <CTASection />
+      <PageHero />
+      <SpecialtiesGrid />
       <ContactSection />
       <Footer />
     </div>

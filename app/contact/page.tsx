@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import {
   Navigation,
@@ -11,54 +10,78 @@ import {
 
 function ContactSection() {
   return (
-    <section className="bg-white py-20 px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left side - Contact form and info */}
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-[#64533c] mb-6">
-              Contact Us
-            </h1>
+    <>
+      <section className="page-hero" style={{ background: "var(--bone)" }}>
+        <div className="wrap">
+          <p className="eyebrow">Contact</p>
+          <h1>Start a search.</h1>
+          <p>
+            Tell us about the role. We&apos;ll come back with an honest read on
+            whether Ponderosa is the right partner — usually within a day.
+          </p>
+        </div>
+      </section>
 
-            <p className="text-gray-700 leading-relaxed mb-8">
-              If you&apos;re interested in collaborating, please provide your
-              information, and we will contact you soon. We look forward to
-              connecting with you.
-            </p>
-
-            {/* Contact information */}
-            <div className="mb-8">
-              <p className="font-semibold text-gray-900">Drake Olson</p>
-              <a
-                href="mailto:drake.olson@ponderosatalent.com"
-                className="text-[#273927] hover:underline"
-              >
-                drake.olson@ponderosatalent.com
-              </a>
-              <br />
-              <span className="text-gray-700">(720) 635-4186</span>
-            </div>
-
+      <section
+        className="section-block"
+        style={{ paddingTop: "40px", background: "var(--bone)" }}
+      >
+        <div className="wrap contact-grid">
+          {/* Form */}
+          <div
+            style={{
+              background: "var(--cream)",
+              borderRadius: "var(--radius)",
+              padding: "32px 30px",
+              boxShadow: "var(--shadow)",
+              border: "1px solid rgba(16, 42, 34, 0.08)",
+            }}
+          >
             <ContactForm
               formType="contact"
-              buttonText="Send"
-              successMessage="Thank you! Your message has been sent successfully."
+              showCompany
+              buttonText="Send →"
+              successMessage="Thank you! Your message has been sent. We'll be in touch soon."
             />
           </div>
 
-          {/* Right side - Image */}
-          <div className="hidden lg:block">
-            <Image
-              src="/contact.jpg"
-              alt="Scenic mountain view"
-              width={800}
-              height={1000}
-              className="w-full h-auto rounded-lg shadow-xl"
-            />
-          </div>
+          {/* Aside */}
+          <aside className="contact-aside">
+            <h3>Or reach out direct.</h3>
+            <div className="line">
+              Email
+              <br />
+              <a href="mailto:drake.olson@ponderosatalent.com">
+                drake.olson@ponderosatalent.com
+              </a>
+            </div>
+            <div className="line">
+              Phone
+              <br />
+              <a href="tel:+17206354186" style={{ color: "var(--sage)" }}>
+                (720) 635-4186
+              </a>
+            </div>
+            <div className="line">
+              Based in
+              <br />
+              <span style={{ color: "var(--cream)" }}>Denver, Colorado</span>
+            </div>
+            <div className="line">
+              LinkedIn
+              <br />
+              <a
+                href="https://www.linkedin.com/company/ponderosatalentgroup"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin.com/company/ponderosatalentgroup
+              </a>
+            </div>
+          </aside>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

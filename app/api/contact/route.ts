@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { z } from "zod";
 import { NextResponse } from "next/server";
+import { appendFormSubmission } from "../../lib/googleSheets";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -52,6 +53,19 @@ export async function POST(request: Request) {
       <hr />
       <p><small>Form Type: ${formType}</small></p>
     `;
+
+    // Log to Google Sheets (non-blocking — sheet failure won't break the form)
+    appendFormSubmission({
+      timestamp: new Date().toISOString(),
+      formType,
+      firstName,
+      lastName,
+      email,
+      phone,
+      company,
+      message,
+      newsletter,
+    }).catch((err) => console.error("Google Sheets logging failed:", err));
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({

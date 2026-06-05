@@ -2,148 +2,134 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Navigation, AnnouncementBanner, Footer, ContactForm } from "../components";
+import {
+  Navigation,
+  AnnouncementBanner,
+  Footer,
+  ContactForm,
+} from "../components";
 
-function MeetTheTeamSection() {
-  const [expandedMember, setExpandedMember] = useState<string | null>(null);
+function AboutHero() {
+  return (
+    <section className="page-hero" style={{ background: "var(--bone)" }}>
+      <div className="wrap">
+        <p className="eyebrow">About Us</p>
+        <h1>
+          Deep roots.
+          <br />
+          One operator.
+        </h1>
+      </div>
+    </section>
+  );
+}
+
+function AboutBody() {
+  const [expanded, setExpanded] = useState(false);
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white pt-20 pb-16 px-8">
-      <div className="max-w-7xl mx-auto text-center">
-        <h1 className="text-5xl md:text-6xl font-bold mb-6">
-          <span className="text-[#273927]">Meet the</span>{" "}
-          <span className="text-[#64533c]">Team</span>
-        </h1>
+    <section
+      className="section-block"
+      style={{ paddingTop: "44px", background: "var(--bone)" }}
+    >
+      <div className="wrap two-col">
+        <div className="prose">
+          <p>
+            Ponderosa was started with the belief that talent can make or break
+            a company – that sometimes you’re only one significant game-changer
+            away from everything being different. We look to help connect
+            companies with this game changing talent.
+          </p>
+          <p>
+            Our specialty is finding elite Engineering talent that can drive
+            results and take your product to the next level. Ponderosa’s
+            philosophy isn’t to be the quickest, cheapest, or easiest to work
+            with. But rather to be a recruiting partner who becomes an extension
+            of your team, who understands your business and market well enough
+            to challenge you, who treats your brand like an extension of our
+            brand, and who won’t stop until we find the right person. Ponderosa
+            was started with the belief that talent can make or break a company
+            – that sometimes you’re only one significant game-changer away from
+            everything being different. We look to help connect companies with
+            this game changing talent. Our specialty is finding elite
+            Engineering talent that can drive results and take your product to
+            the next level. Ponderosa’s philosophy isn’t to be the quickest,
+            cheapest, or easiest to work with. But rather to be a recruiting
+            partner who becomes an extension of your team, who understands your
+            business and market well enough to challenge you, who treats your
+            brand like an extension of our brand, and who won’t stop until we
+            find the right person.
+          </p>
 
-        <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-16 max-w-4xl mx-auto">
-          At{" "}
-          <span className="text-[#273927] font-semibold">
-            Ponderosa Talent Group
-          </span>
-          , we specialize in connecting top-tier IT professionals with
-          organizations across North America. We provide{" "}
-          <span className="text-[#273927] font-semibold">
-            contract, contract-to-hire, and direct-hire
-          </span>{" "}
-          staffing solutions, ensuring businesses have the flexibility to scale
-          their teams efficiently. Our expertise spans across multiple
-          technology disciplines, ensuring that businesses secure the right
-          talent to drive innovation, efficiency, and success.
-        </p>
-
-        {/* Team member card - Drake */}
-        <div className="flex justify-center">
-          <div className="w-full max-w-md">
-            <div className="mb-6 flex justify-center">
-              <Image
-                src="/drake-olson.PNG"
-                alt="Drake Olson"
-                width={500}
-                height={700}
-                className="w-auto h-auto max-h-[500px] rounded-lg"
-              />
+          {expanded && (
+            <div style={{ marginTop: "0" }}>
+              <p>
+                Drake has spent the past 6+ years recruiting engineers,
+                primarily across software and cloud/platform roles. Before
+                starting Ponderosa, he spent 4+ years at Robert Half, where he
+                was a top-five technical recruiter in North America.
+              </p>
+              <p>
+                His approach is built on being fair to both sides — telling a
+                hiring team where they're missing the mark, telling a candidate
+                when a role isn't the right fit — because the only placements
+                worth making are the ones where both sides know what they signed
+                up for. He prides himself on the technical depth to vet the work
+                himself, and on trusting his gut on whether a match will last.
+              </p>
+              <p>
+                Outside of work, Drake is a huge sports fan (Colorado Buffaloes,
+                Chicago Cubs, Denver Broncos, and Colorado Avalanche) and spends
+                plenty of time frustrated on the golf course.
+              </p>
             </div>
-            <div className="border-t-2 border-gray-300 pt-4">
-              <div className="flex items-center justify-between mb-2">
-                <div>
-                  <h3 className="text-2xl font-semibold text-[#273927]">
-                    Drake Olson
-                  </h3>
-                  {expandedMember === "drake" && (
-                    <p className="text-[#64533c] font-medium mt-1">
-                      Co-Founder
-                    </p>
-                  )}
-                </div>
-                <button
-                  onClick={() =>
-                    setExpandedMember(
-                      expandedMember === "drake" ? null : "drake",
-                    )
-                  }
-                  className="text-[#273927] hover:text-[#64533c] transition-all"
-                  aria-label={
-                    expandedMember === "drake"
-                      ? "Collapse details"
-                      : "Expand details"
-                  }
-                >
-                  {expandedMember === "drake" ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-8 w-8"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M20 12H4"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-8 w-8"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 4v16m8-8H4"
-                      />
-                    </svg>
-                  )}
-                </button>
-              </div>
+          )}
 
-              <div
-                className="overflow-hidden transition-all duration-700 ease-in-out"
-                style={{
-                  maxHeight: expandedMember === "drake" ? "1000px" : "0px",
-                  opacity: expandedMember === "drake" ? 1 : 0,
-                }}
-              >
-                <div className="pt-4 space-y-4 text-[#64533c]">
-                  <p className="leading-relaxed">
-                    Drake helped co-found Ponderosa Talent Group after five years
-                    with two of the largest IT staffing agencies where he was a
-                    consistent top-performer both as a Recruiter & Account
-                    Executive. He prides himself on a personalized approach,
-                    taking the time to understand both the aspirations of his
-                    candidates and the specific needs of his clients to create
-                    successful matches that make sense for each.
-                  </p>
+          <button
+            onClick={() => setExpanded(!expanded)}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: "var(--amber-dk)",
+              fontWeight: 600,
+              fontSize: "14px",
+              padding: 0,
+              fontFamily: "var(--font-body)",
+            }}
+          >
+            {expanded ? "Show less ↑" : "Read more about Drake ↓"}
+          </button>
+        </div>
 
-                  <p className="leading-relaxed">
-                    Drake&apos;s primary focuses are Data & Analytics, Cloud
-                    Engineering, and IT Security. Drake wanted to build
-                    Ponderosa Talent Group as he believes there is a market for
-                    organizations that can provide high-quality delivery without
-                    sacrificing an honest and collaborative style where everyone
-                    wins.
-                  </p>
-
-                  <p className="leading-relaxed">
-                    Originally from Colorado, Drake is a graduate of University
-                    of Colorado with a degree in Economics. Drake is a massive
-                    sports fan with his favorite teams being the Chicago Cubs,
-                    Denver Broncos, Colorado Avalanche, and Colorado Buffaloes.
-                    When he&apos;s not following sports, he can be found trying
-                    to stay calm on the golf course and spending as much time
-                    with family and friends as he can.
-                  </p>
-
-                  <div className="border-t-2 border-gray-300 pt-4"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div>
+          <Image
+            src="/drake-olson.PNG"
+            alt="Drake Olson, Founder of Ponderosa"
+            width={304}
+            height={306}
+            quality={100}
+            style={{
+              width: "100%",
+              height: "auto",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+            }}
+          />
+          <p
+            style={{
+              marginTop: "16px",
+              fontFamily: "var(--font-display)",
+              fontStyle: "italic",
+              fontSize: "16px",
+              color: "var(--ink-soft)",
+              lineHeight: 1.5,
+            }}
+          >
+            &ldquo;The ponderosa pine puts down a taproot before it ever grows
+            tall. That&apos;s the order of operations here too — expertise
+            first.&rdquo;
+          </p>
         </div>
       </div>
     </section>
@@ -152,27 +138,57 @@ function MeetTheTeamSection() {
 
 function ContactSection() {
   return (
-    <section className="bg-[#273927] py-20 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Contact heading and text */}
-          <div className="text-white">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Contact us
+    <section
+      className="section-block"
+      style={{ background: "var(--pine-900)" }}
+    >
+      <div className="wrap">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "64px",
+            alignItems: "center",
+          }}
+          className="two-col"
+        >
+          <div style={{ color: "var(--cream)" }}>
+            <h2
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 600,
+                fontSize: "clamp(32px, 5vw, 52px)",
+                letterSpacing: "-0.02em",
+                lineHeight: 1.05,
+                marginBottom: "16px",
+              }}
+            >
+              Let&apos;s talk.
             </h2>
-            <p className="text-xl text-white/90 leading-relaxed">
-              Interested in working together? Fill out some info and we will be
-              in touch shortly. We can&apos;t wait to hear from you!
+            <p
+              style={{
+                fontSize: "18px",
+                color: "var(--sage)",
+                lineHeight: 1.6,
+              }}
+            >
+              Interested in working together? Fill out some info and we&apos;ll
+              be in touch shortly.
             </p>
           </div>
-
-          {/* Right side - Contact form */}
-          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-10">
+          <div
+            style={{
+              background: "var(--cream)",
+              borderRadius: "22px",
+              padding: "36px 32px",
+              boxShadow: "var(--shadow)",
+            }}
+          >
             <ContactForm
               formType="about"
               showNewsletter
-              buttonText="Submit"
-              successMessage="Thank you for your message! We'll be in touch soon."
+              buttonText="Send"
+              successMessage="Thank you! We'll be in touch soon."
             />
           </div>
         </div>
@@ -190,7 +206,8 @@ export default function AboutPage() {
         <AnnouncementBanner onClose={() => setShowBanner(false)} />
       )}
       <Navigation />
-      <MeetTheTeamSection />
+      <AboutHero />
+      <AboutBody />
       <ContactSection />
       <Footer />
     </div>

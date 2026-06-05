@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 import { useContactForm } from "../hooks/useContactForm";
 import { FormMessage } from "./FormMessage";
 import { FormInput, FormTextarea, FormCheckbox } from "./FormInput";
@@ -19,8 +19,7 @@ interface ContactFormProps {
   showNewsletter?: boolean;
   showPhone?: boolean;
   showCompany?: boolean;
-  accentColor?: "blue" | "burgundy";
-  buttonVariant?: "primary" | "burgundy" | "burgundy-gradient";
+  buttonVariant?: "primary" | "burgundy" | "burgundy-gradient" | "amber";
   buttonText?: string;
   successMessage?: string;
   messageRequired?: boolean;
@@ -42,12 +41,11 @@ export function ContactForm({
   showNewsletter = false,
   showPhone = false,
   showCompany = false,
-  accentColor = "blue",
-  buttonVariant = "primary",
+  buttonVariant = "amber",
   buttonText = "Submit",
   successMessage = "Thank you! We'll be in touch soon.",
   messageRequired = true,
-  messageRows = 5,
+  messageRows = 1,
 }: ContactFormProps) {
   const { submitForm, isSubmitting, isSuccess, error, reset } =
     useContactForm();
@@ -61,12 +59,9 @@ export function ContactForm({
     newsletter: false,
   });
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const result = await submitForm({
-      ...formData,
-      formType,
-    });
+    const result = await submitForm({ ...formData, formType });
 
     if (result.success) {
       setFormData({
@@ -87,7 +82,6 @@ export function ContactForm({
   ) => {
     const target = e.target as HTMLInputElement;
     const { name, value, type } = target;
-
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? target.checked : value,
@@ -99,61 +93,58 @@ export function ContactForm({
       {isSuccess && <FormMessage type="success" message={successMessage} />}
       {error && <FormMessage type="error" message={error} />}
 
-      <form className="space-y-6" onSubmit={handleSubmit}>
-        {/* Name section */}
-        <div>
-          <label className="block text-sm font-semibold text-gray-900 mb-4">
-            Name
-          </label>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <FormInput
-              name="firstName"
-              label="First Name"
-              value={formData.firstName}
-              onChange={handleChange}
-              disabled={isSubmitting}
-              required
-              accentColor={accentColor}
-            />
-            <FormInput
-              name="lastName"
-              label="Last Name"
-              value={formData.lastName}
-              onChange={handleChange}
-              disabled={isSubmitting}
-              required
-              accentColor={accentColor}
-            />
-          </div>
+      <form
+        style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+        onSubmit={handleSubmit}
+      >
+        {/* Name row */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "12px",
+          }}
+        >
+          <FormInput
+            name="firstName"
+            label="First Name"
+            value={formData.firstName}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            required
+          />
+          <FormInput
+            name="lastName"
+            label="Last Name"
+            value={formData.lastName}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            required
+          />
         </div>
 
-        {/* Email field */}
         <FormInput
           type="email"
           name="email"
-          label="Email"
+          label="Work Email"
           value={formData.email}
           onChange={handleChange}
           disabled={isSubmitting}
           required
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-          accentColor={accentColor}
         />
 
-        {/* Newsletter checkbox */}
-        {showNewsletter && (
-          <FormCheckbox
-            id={`newsletter-${formType}`}
-            name="newsletter"
-            label="Sign up for news and updates"
-            checked={formData.newsletter}
+        {showCompany && (
+          <FormInput
+            name="company"
+            label="Company"
+            value={formData.company || ""}
             onChange={handleChange}
             disabled={isSubmitting}
-            accentColor={accentColor}
+            required
           />
         )}
 
-        {/* Phone field */}
         {showPhone && (
           <FormInput
             type="tel"
@@ -162,24 +153,9 @@ export function ContactForm({
             value={formData.phone || ""}
             onChange={handleChange}
             disabled={isSubmitting}
-            accentColor={accentColor}
           />
         )}
 
-        {/* Company field */}
-        {showCompany && (
-          <FormInput
-            name="company"
-            label="Company Name"
-            value={formData.company || ""}
-            onChange={handleChange}
-            disabled={isSubmitting}
-            required
-            accentColor={accentColor}
-          />
-        )}
-
-        {/* Message field */}
         <FormTextarea
           name="message"
           label="Message"
@@ -188,17 +164,24 @@ export function ContactForm({
           disabled={isSubmitting}
           required={messageRequired}
           rows={messageRows}
-          accentColor={accentColor}
         />
 
-        {/* Submit button */}
-        <div>
+        {showNewsletter && (
+          <FormCheckbox
+            id={`newsletter-${formType}`}
+            name="newsletter"
+            label="Sign up for news and updates"
+            checked={formData.newsletter}
+            onChange={handleChange}
+            disabled={isSubmitting}
+          />
+        )}
+
+        <div style={{ marginTop: "4px" }}>
           <Button
-            className="cursor-pointer"
             type="submit"
             variant={buttonVariant}
             size="large"
-            fullWidth={buttonVariant === "burgundy-gradient"}
             disabled={isSubmitting}
           >
             {isSubmitting ? "Sending..." : buttonText}

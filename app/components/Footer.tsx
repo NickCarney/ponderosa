@@ -1,52 +1,40 @@
 export function Footer() {
   return (
-    <footer className="bg-[#e5dfcf] py-12 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Left - Logo and Privacy Policy */}
-          <div>
-            <h3 className="text-3xl font-bold mb-6">
-              <span className="text-[#64533c]">Ponderosa</span>{" "}
-              <span className="text-[#273927]">Talent Group</span>
-            </h3>
-            <a
-              href="/privacy-policy"
-              className="text-[#273927] underline hover:text-[#64533c] transition-colors"
-            >
-              Privacy Policy
-            </a>
+    <footer
+      style={{
+        background: "var(--pine-900)",
+        color: "var(--sage)",
+        padding: "56px 0 36px",
+      }}
+    >
+      <div className="wrap">
+        <div className="foot-top">
+          <div className="foot-brand">
+            <div className="name">Ponderosa</div>
+            <p>
+              Boutique technical recruiting. Senior, staff, and founding
+              engineers for VC-backed startups. Rooted in expertise.
+            </p>
           </div>
-
-          {/* Middle - Location */}
-          <div>
-            <h4 className="text-xl font-bold text-gray-900 mb-4">Location</h4>
-            <address className="not-italic text-gray-700 leading-relaxed">
-              1100 Johnson Rd. #16061
-              <br />
-              Golden, CO 80402
-            </address>
-          </div>
-
-          {/* Right - Contact */}
-          <div>
-            <h4 className="text-xl font-bold text-gray-900 mb-4">Contact</h4>
-            <div className="text-gray-700">
-              <p className="font-semibold">Drake Olson</p>
-              <a
-                href="mailto:drake.olson@ponderosatalent.com"
-                className="text-[#64533c] hover:underline"
-              >
-                drake.olson@ponderosatalent.com
-              </a>
-              <br />
-              <a
-                href="tel:+17206354186"
-                className="text-gray-700 hover:underline"
-              >
-                (720) 635-4186
-              </a>
+          <div className="foot-links">
+            <div className="foot-col">
+              <h4>Explore</h4>
+              <a href="/salary-guide">Blog</a>
+              <a href="/about">About</a>
+              <a href="/specialties">Specialties</a>
+              <a href="/contact">Contact</a>
+            </div>
+            <div className="foot-col">
+              <h4>Connect</h4>
+              <a href="mailto:drake.olson@ponderosatalent.com">Email Drake</a>
+              <a href="tel:+17206354186">(720) 635-4186</a>
+              <a href="/privacy-policy">Privacy Policy</a>
             </div>
           </div>
+        </div>
+        <div className="foot-bottom">
+          <span>© 2026 Ponderosa Talent Group. All rights reserved.</span>
+          <span>Denver, Colorado</span>
         </div>
       </div>
     </footer>
