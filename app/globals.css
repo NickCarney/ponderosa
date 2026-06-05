@@ -492,6 +492,25 @@ a { color: inherit; text-decoration: none; }
 }
 .quote .cite { margin-top: 22px; color: var(--ink-soft); font-size: 15px; }
 
+/* ── 2-col post grid (stacks on mobile) ─────────────── */
+.posts-2col { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 767px) {
+  .posts-2col { grid-template-columns: 1fr; }
+}
+
+/* ── Mobile nav strip ────────────────────────────────── */
+.nav-mobile-strip { display: none; }
+
+@media (max-width: 767px) {
+  .nav-mobile-strip {
+    display: flex;
+    justify-content: center;
+    padding: 4px 12px 10px;
+    gap: 2px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
 /* ── Responsive ──────────────────────────────────────── */
 @media (max-width: 860px) {
   .principles,

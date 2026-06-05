@@ -207,7 +207,7 @@ export function EssentialResourcesSectionB() {
             <p className="eyebrow">From the Blog</p>
             <h2>Notes on the talent market.</h2>
           </div>
-          <div className="posts" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+          <div className="posts posts-2col">
             <a href="/salary-guide" className="post">
               <div className="thumb" />
               <div className="body">

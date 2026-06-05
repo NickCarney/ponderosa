@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 
 export function AnnouncementBanner({ onClose }: { onClose: () => void }) {
@@ -63,7 +62,6 @@ const NAV_LINKS = [
 ];
 
 export function Navigation() {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
   const isActive = (href: string) =>
@@ -126,7 +124,7 @@ export function Navigation() {
         {/* Desktop tabs */}
         <nav
           className="hidden md:flex"
-          style={{ display: "flex", gap: "6px", alignItems: "center" }}
+          style={{ gap: "6px", alignItems: "center" }}
         >
           {NAV_LINKS.map(({ href, label }) => (
             <a
@@ -139,94 +137,24 @@ export function Navigation() {
           ))}
         </nav>
 
-        {/* Desktop CTA + mobile burger */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <a href="/contact" className="nav-cta hidden md:inline-flex">
-            Start a Search →
-          </a>
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden"
-            style={{
-              background: "none",
-              border: 0,
-              cursor: "pointer",
-              padding: "8px",
-            }}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          >
-            <span
-              style={{
-                display: "block",
-                width: "22px",
-                height: "2px",
-                background: "var(--cream)",
-                margin: "4px 0",
-                transition: "0.2s",
-              }}
-            />
-            <span
-              style={{
-                display: "block",
-                width: "22px",
-                height: "2px",
-                background: "var(--cream)",
-                margin: "4px 0",
-                transition: "0.2s",
-              }}
-            />
-            <span
-              style={{
-                display: "block",
-                width: "22px",
-                height: "2px",
-                background: "var(--cream)",
-                margin: "4px 0",
-                transition: "0.2s",
-              }}
-            />
-          </button>
-        </div>
+        {/* Desktop CTA */}
+        <a href="/contact" className="nav-cta hidden md:inline-flex">
+          Start a Search →
+        </a>
       </div>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div
-          style={{
-            background: "#223a24",
-            padding: "14px 24px 20px",
-            borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
-          }}
-        >
-          {NAV_LINKS.map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              style={{
-                display: "block",
-                padding: "10px 0",
-                color: isActive(href) ? "#fff" : "rgba(230, 223, 205, 0.82)",
-                fontWeight: 500,
-                textDecoration: "none",
-                borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
-                fontFamily: "var(--font-body)",
-                fontSize: "15px",
-              }}
-              onClick={() => setMobileOpen(false)}
-            >
-              {label}
-            </a>
-          ))}
+      {/* Mobile nav strip */}
+      <div className="nav-mobile-strip">
+        {NAV_LINKS.map(({ href, label }) => (
           <a
-            href="/contact"
-            className="btn-primary"
-            style={{ marginTop: "14px" }}
-            onClick={() => setMobileOpen(false)}
+            key={href}
+            href={href}
+            className={`nav-tab${isActive(href) ? " active" : ""}`}
           >
-            Start a Search →
+            {label}
           </a>
-        </div>
-      )}
+        ))}
+      </div>
     </header>
   );
 }
