@@ -104,18 +104,29 @@ function AboutBody() {
 
         <div>
           <Image
-            src="/drake-olson.PNG"
-            alt="Drake Olson, Founder of Ponderosa"
+            src="/logo.svg"
+            alt="Ponderosa logo"
             width={304}
             height={306}
-            quality={100}
             style={{
               width: "100%",
               height: "auto",
-              borderRadius: "var(--radius)",
-              boxShadow: "var(--shadow)",
             }}
           />
+          <p
+            style={{
+              marginTop: "12px",
+              fontFamily: "var(--font-display)",
+              fontWeight: 700,
+              fontSize: "clamp(32px, 5vw, 52px)",
+              color: "var(--moss)",
+              letterSpacing: "-0.02em",
+              lineHeight: 1,
+              textAlign: "center",
+            }}
+          >
+            Ponderosa
+          </p>
           <p
             style={{
               marginTop: "16px",

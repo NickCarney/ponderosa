@@ -71,6 +71,7 @@ export function Navigation() {
 
   return (
     <header
+      className="site-header"
       style={{
         position: "sticky",
         top: 0,
@@ -79,6 +80,7 @@ export function Navigation() {
         backdropFilter: "blur(10px)",
         WebkitBackdropFilter: "blur(10px)",
         borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+        paddingTop: "env(safe-area-inset-top)",
       }}
     >
       <div
