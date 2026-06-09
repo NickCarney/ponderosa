@@ -95,13 +95,12 @@ export function Navigation() {
         {/* Brand */}
         <a
           href="/"
-          className="!-ml-[15%] md:-ml-[7%]"
+          className="nav-brand"
           style={{
             display: "flex",
             alignItems: "center",
             gap: "11px",
             textDecoration: "none",
-            marginLeft: "-7%",
           }}
         >
           <Image

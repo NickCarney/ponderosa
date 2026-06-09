@@ -84,7 +84,7 @@ function SpecialtiesGrid() {
                 risk. You only pay when we deliver.
               </p>
             </div>
-            <div style={{ marginTop: "24px" }}>
+            <div style={{ marginTop: "24px", textAlign: "center" }}>
               <a href="/contact" className="btn-primary">
                 Start a Search →
               </a>
@@ -105,8 +105,6 @@ function ContactSection() {
       <div className="wrap">
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
             gap: "64px",
             alignItems: "center",
           }}

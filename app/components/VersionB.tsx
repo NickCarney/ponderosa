@@ -188,7 +188,7 @@ export function EssentialResourcesSectionB() {
                 <i>·</i>Canada
               </p>
             </div>
-            <div style={{ marginTop: "26px" }}>
+            <div style={{ marginTop: "26px", textAlign: "center" }}>
               <a href="/specialties" className="btn-primary">
                 See all specialties →
               </a>

@@ -61,32 +61,10 @@ function AboutBody() {
             find the right person.
           </p>
 
-          {expanded && (
-            <div style={{ marginTop: "0" }}>
-              <p>
-                Drake has spent the past 6+ years recruiting engineers,
-                primarily across software and cloud/platform roles. Before
-                starting Ponderosa, he spent 4+ years at Robert Half, where he
-                was a top-five technical recruiter in North America.
-              </p>
-              <p>
-                His approach is built on being fair to both sides — telling a
-                hiring team where they're missing the mark, telling a candidate
-                when a role isn't the right fit — because the only placements
-                worth making are the ones where both sides know what they signed
-                up for. He prides himself on the technical depth to vet the work
-                himself, and on trusting his gut on whether a match will last.
-              </p>
-              <p>
-                Outside of work, Drake is a huge sports fan (Colorado Buffaloes,
-                Chicago Cubs, Denver Broncos, and Colorado Avalanche) and spends
-                plenty of time frustrated on the golf course.
-              </p>
-            </div>
-          )}
-
           <button
+            type="button"
             onClick={() => setExpanded(!expanded)}
+            className="hidden md:inline-block"
             style={{
               background: "none",
               border: "none",
@@ -94,12 +72,34 @@ function AboutBody() {
               color: "var(--amber-dk)",
               fontWeight: 600,
               fontSize: "14px",
-              padding: 0,
+              padding: "10px 0",
               fontFamily: "var(--font-body)",
             }}
           >
             {expanded ? "Show less ↑" : "Read more about Drake ↓"}
           </button>
+
+          <div className={!expanded ? "md:hidden" : ""}>
+            <p>
+              Drake has spent the past 6+ years recruiting engineers,
+              primarily across software and cloud/platform roles. Before
+              starting Ponderosa, he spent 4+ years at Robert Half, where he
+              was a top-five technical recruiter in North America.
+            </p>
+            <p>
+              His approach is built on being fair to both sides — telling a
+              hiring team where they're missing the mark, telling a candidate
+              when a role isn't the right fit — because the only placements
+              worth making are the ones where both sides know what they signed
+              up for. He prides himself on the technical depth to vet the work
+              himself, and on trusting his gut on whether a match will last.
+            </p>
+            <p>
+              Outside of work, Drake is a huge sports fan (Colorado Buffaloes,
+              Chicago Cubs, Denver Broncos, and Colorado Avalanche) and spends
+              plenty of time frustrated on the golf course.
+            </p>
+          </div>
         </div>
 
         <div>
@@ -156,8 +156,6 @@ function ContactSection() {
       <div className="wrap">
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
             gap: "64px",
             alignItems: "center",
           }}
