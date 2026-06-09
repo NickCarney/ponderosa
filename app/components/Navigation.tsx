@@ -95,19 +95,21 @@ export function Navigation() {
         {/* Brand */}
         <a
           href="/"
+          className="!-ml-[15%] md:-ml-[7%]"
           style={{
             display: "flex",
             alignItems: "center",
             gap: "11px",
             textDecoration: "none",
+            marginLeft: "-7%",
           }}
         >
           <Image
             src="/logo.svg"
             alt="Ponderosa"
-            width={38}
-            height={38}
-            style={{ height: "38px", width: "auto", display: "block" }}
+            width={166}
+            height={100}
+            style={{ height: "100px", width: "auto", display: "block" }}
             priority
           />
           <span
@@ -117,6 +119,7 @@ export function Navigation() {
               fontSize: "21px",
               letterSpacing: "-0.01em",
               color: "var(--cream)",
+              textIndent: "-75%",
             }}
           >
             Ponderosa
