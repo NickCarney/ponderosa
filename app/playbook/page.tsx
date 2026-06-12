@@ -36,8 +36,7 @@ function PlaybookSection() {
             showNewsletter
             showPhone
             showCompany
-            accentColor="burgundy"
-            buttonVariant="burgundy"
+            buttonVariant="outline"
             buttonText="Submit"
             successMessage="Thank you! Your request has been submitted successfully."
             messageRequired={false}

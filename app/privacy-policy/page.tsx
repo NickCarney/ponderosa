@@ -112,10 +112,10 @@ export default function PrivacyPolicy() {
               Individuals may request data access, correction, deletion, or
               marketing communication opt-out. Contact:{" "}
               <a
-                href="mailto:Dolson@crosscheckstaffing.com"
+                href="mailto:drake.olson@ponderosatalent.com"
                 className="text-[#273927] hover:underline"
               >
-                Dolson@crosscheckstaffing.com
+                drake.olson@ponderosatalent.com
               </a>
             </p>
           </section>
@@ -161,10 +161,10 @@ export default function PrivacyPolicy() {
               <p className="font-semibold">Ponderosa Talent Group</p>
               <p>1100 Johnson Rd. #16061, Golden, CO 80402</p>
               <a
-                href="mailto:Dolson@crosscheckstaffing.com"
+                href="mailto:drake.olson@ponderosatalent.com"
                 className="text-[#273927] hover:underline"
               >
-                Dolson@crosscheckstaffing.com
+                drake.olson@ponderosatalent.com
               </a>
             </div>
           </section>

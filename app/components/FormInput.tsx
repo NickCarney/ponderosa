@@ -35,17 +35,26 @@ interface FormCheckboxProps {
   accentColor?: "blue" | "burgundy";
 }
 
-const accentColors = {
-  blue: {
-    label: "text-[#273927]",
-    ring: "focus:ring-[#273927]",
-    checkbox: "text-[#273927]",
-  },
-  burgundy: {
-    label: "text-[#64533c]",
-    ring: "focus:ring-[#64533c]",
-    checkbox: "text-[#64533c]",
-  },
+const fieldBase: React.CSSProperties = {
+  width: "100%",
+  padding: "13px 15px",
+  borderRadius: "12px",
+  fontFamily: "var(--font-body)",
+  fontSize: "15px",
+  border: "1px solid rgba(16, 42, 34, 0.2)",
+  background: "var(--cream)",
+  color: "var(--ink)",
+  outline: "none",
+  transition: "border-color 0.15s, box-shadow 0.15s",
+};
+
+const labelStyle: React.CSSProperties = {
+  display: "block",
+  fontSize: "13px",
+  fontWeight: 600,
+  color: "var(--pine-900)",
+  marginBottom: "6px",
+  fontFamily: "var(--font-body)",
 };
 
 export function FormInput({
@@ -58,14 +67,11 @@ export function FormInput({
   required = false,
   placeholder,
   pattern,
-  accentColor = "blue",
 }: FormInputProps) {
-  const colors = accentColors[accentColor];
-
   return (
     <div>
-      <label className={`block text-xs ${colors.label} mb-2`}>
-        {label} {required && <span className="text-gray-500">(required)</span>}
+      <label style={labelStyle}>
+        {label}
       </label>
       <input
         type={type}
@@ -76,7 +82,19 @@ export function FormInput({
         required={required}
         placeholder={placeholder}
         pattern={pattern}
-        className={`w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 ${colors.ring} focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+        style={{
+          ...fieldBase,
+          opacity: disabled ? 0.5 : 1,
+          cursor: disabled ? "not-allowed" : "text",
+        }}
+        onFocus={(e) => {
+          e.target.style.borderColor = "var(--moss)";
+          e.target.style.boxShadow = "0 0 0 2px rgba(143, 166, 142, 0.3)";
+        }}
+        onBlur={(e) => {
+          e.target.style.borderColor = "rgba(16, 42, 34, 0.2)";
+          e.target.style.boxShadow = "none";
+        }}
       />
     </div>
   );
@@ -91,14 +109,11 @@ export function FormTextarea({
   required = false,
   placeholder,
   rows = 5,
-  accentColor = "blue",
 }: FormTextareaProps) {
-  const colors = accentColors[accentColor];
-
   return (
     <div>
-      <label className={`block text-xs ${colors.label} mb-2`}>
-        {label} {required && <span className="text-gray-500">(required)</span>}
+      <label style={labelStyle}>
+        {label}
       </label>
       <textarea
         name={name}
@@ -108,7 +123,20 @@ export function FormTextarea({
         required={required}
         placeholder={placeholder}
         rows={rows}
-        className={`w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 ${colors.ring} focus:border-transparent transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed`}
+        style={{
+          ...fieldBase,
+          resize: "none",
+          opacity: disabled ? 0.5 : 1,
+          cursor: disabled ? "not-allowed" : "text",
+        }}
+        onFocus={(e) => {
+          e.target.style.borderColor = "var(--moss)";
+          e.target.style.boxShadow = "0 0 0 2px rgba(143, 166, 142, 0.3)";
+        }}
+        onBlur={(e) => {
+          e.target.style.borderColor = "rgba(16, 42, 34, 0.2)";
+          e.target.style.boxShadow = "none";
+        }}
       />
     </div>
   );
@@ -121,12 +149,9 @@ export function FormCheckbox({
   checked,
   onChange,
   disabled = false,
-  accentColor = "blue",
 }: FormCheckboxProps) {
-  const colors = accentColors[accentColor];
-
   return (
-    <div className="flex items-center gap-2">
+    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
       <input
         type="checkbox"
         id={id}
@@ -134,9 +159,22 @@ export function FormCheckbox({
         checked={checked}
         onChange={onChange}
         disabled={disabled}
-        className={`w-4 h-4 ${colors.checkbox} border-gray-300 rounded ${colors.ring} disabled:opacity-50 disabled:cursor-not-allowed`}
+        style={{
+          width: "16px",
+          height: "16px",
+          accentColor: "var(--moss)",
+          cursor: disabled ? "not-allowed" : "pointer",
+        }}
       />
-      <label htmlFor={id} className={`text-sm ${colors.label}`}>
+      <label
+        htmlFor={id}
+        style={{
+          fontSize: "14px",
+          color: "var(--ink-soft)",
+          fontFamily: "var(--font-body)",
+          cursor: disabled ? "not-allowed" : "pointer",
+        }}
+      >
         {label}
       </label>
     </div>

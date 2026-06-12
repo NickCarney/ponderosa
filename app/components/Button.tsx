@@ -1,22 +1,24 @@
 import React from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "burgundy" | "burgundy-gradient";
+  variant?: "primary" | "secondary" | "burgundy" | "burgundy-gradient" | "amber" | "outline";
   size?: "default" | "large";
   fullWidth?: boolean;
   children: React.ReactNode;
 }
 
 const variantStyles = {
-  primary: "bg-[#273927] text-white hover:bg-[#1d2b1d]",
-  secondary: "bg-white text-[#273927] hover:bg-gray-100",
+  primary: "bg-[#102a22] text-white hover:bg-[#15392e]",
+  secondary: "bg-white text-[#102a22] hover:bg-gray-100",
   burgundy: "bg-[#64533c] text-white hover:bg-[#544430]",
   "burgundy-gradient": "bg-gradient-to-r from-[#64533c] to-[#7a6a4d] text-white hover:shadow-xl transform hover:-translate-y-0.5",
+  amber: "bg-[#c8893a] text-[#2a1c08] font-bold hover:bg-[#a96e29] hover:-translate-y-0.5",
+  outline: "bg-transparent border border-[#102a22] text-[#102a22] hover:bg-[#102a22]/5",
 };
 
 const sizeStyles = {
   default: "px-8 py-3 text-sm",
-  large: "px-10 py-4 text-lg",
+  large: "px-10 py-4 text-base",
 };
 
 export function Button({

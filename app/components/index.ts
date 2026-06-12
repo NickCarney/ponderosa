@@ -5,3 +5,9 @@ export type { FormType } from "./ContactForm";
 export { FormMessage } from "./FormMessage";
 export { FormInput, FormTextarea, FormCheckbox } from "./FormInput";
 export { Button } from "./Button";
+export {
+  HeroSectionB,
+  WhyChooseSectionB,
+  EssentialResourcesSectionB,
+  ContactSectionB,
+} from "./VersionB";
